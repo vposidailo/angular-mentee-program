@@ -7,6 +7,7 @@ import { VideoCoursesListItemComponentComponent } from './video-courses-list-ite
   imports: [
     CommonModule
   ],
-  declarations: [VideoCoursesListComponentComponent, VideoCoursesListItemComponentComponent]
+  declarations: [VideoCoursesListComponentComponent, VideoCoursesListItemComponentComponent],
+  exports:[VideoCoursesListComponentComponent, VideoCoursesListItemComponentComponent]
 })
 export class VideoCoursesListModule { }

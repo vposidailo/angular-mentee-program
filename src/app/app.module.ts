@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
+import { VideoCoursesListModule } from './video-courses-list/video-courses-list.module';
+import { ToolboxModule } from './toolbox/toolbox.module';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    CoreModule
+    CoreModule,
+    VideoCoursesListModule,
+    ToolboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

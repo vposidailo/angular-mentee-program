@@ -9,6 +9,6 @@ import { FooterComponent } from './footer/footer.component';
     CommonModule
   ],
   declarations: [HeaderComponent, FooterComponent, BreadcrumbsComponent],
-  exports: [HeaderComponent, FooterComponent,]
+  exports: [HeaderComponent, FooterComponent, BreadcrumbsComponent]
 })
 export class CoreModule { }
