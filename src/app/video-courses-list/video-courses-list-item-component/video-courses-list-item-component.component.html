@@ -1,10 +1,14 @@
 <div class="alert alert-primary">
   <div class="row">
-    <div class="col-8">
+    <div class="col-6">
         <h5>{{VCItem.Title}}</h5>
     </div>
-    <div class="col-2 video-course-duration">
-        <p>{{((VCItem.Duration - VCItem.Duration % 60) / 60) }} h {{VCItem.Duration % 60}} m</p>
+    <div class="col-4 video-course-duration">
+        <p>
+            <b>Duration:</b> 
+            {{((VCItem.Duration - VCItem.Duration % 60) / 60) }} h {{VCItem.Duration % 60}} m
+            <b>Release date:</b> {{VCItem.Creationdate | date}}
+        </p>
     </div>
     <div class="col-2">
         <input type="button" value="Update" class="btn video-course-button-width">
