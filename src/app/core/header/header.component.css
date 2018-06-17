@@ -1,15 +1,17 @@
 .header-logo-image{
-    width: 10%;
+    width: 8%;
+    min-width: 8%;
 }
 
 .header-float-right-and-center {
     float: right;
-    margin-top: 2%;
+    margin-top: 3px;
 }
 
 .header-website-name {
     position: absolute;
-    margin-top: 2%
+    margin-top: 3px;
+    padding-left: 1%;
 }
 
 .header-login-information {
