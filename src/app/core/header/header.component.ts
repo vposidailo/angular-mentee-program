@@ -7,11 +7,6 @@ import { User } from '../../model/user';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public user: User = {
-    Id: 1,
-    FirstName: "Vitalii",
-    LastName: "Posidailo"
-  };
 
   constructor() { }
 
