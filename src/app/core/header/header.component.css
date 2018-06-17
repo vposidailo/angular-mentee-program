@@ -1,11 +1,6 @@
 .header-logo-image{
-    width: 8%;
-    min-width: 8%;
-}
-
-.header-float-right-and-center {
-    float: right;
-    margin-top: 3px;
+    width: 70px;
+    min-width: 70px;
 }
 
 .header-website-name {

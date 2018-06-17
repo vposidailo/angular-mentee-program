@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public user: User = {
+    Id: 1,
+    FirstName: "Vitalii",
+    LastName: "Posidailo"
+  };
 
   constructor() { }
 
