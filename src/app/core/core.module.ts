@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { LoginService } from './login.service';
+import { LoginModule } from '../login/login.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    LoginModule
   ],
-  providers: [LoginService],
-  declarations: [HeaderComponent, FooterComponent, BreadcrumbsComponent, LoginComponent],
+  declarations: [HeaderComponent, FooterComponent, BreadcrumbsComponent],
   exports: [HeaderComponent, FooterComponent, BreadcrumbsComponent]
 })
 export class CoreModule { }
