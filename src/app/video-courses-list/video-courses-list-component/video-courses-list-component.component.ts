@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoCourseItem } from '../../model/video-course-item';
-import { VideoCoursesServiceService } from '../video-courses-service.service';
+import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
+
 
 @Component({
   selector: 'app-video-courses-list-component',
