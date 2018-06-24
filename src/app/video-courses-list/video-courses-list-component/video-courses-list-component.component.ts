@@ -10,13 +10,24 @@ import { VideoCoursesServiceService } from '../../_shared/services/video_courses
 })
 export class VideoCoursesListComponentComponent implements OnInit {
   public videoCourses: VideoCourseItem[] = [];
+  private videoCourceIndex: number = 1;
+  public loadMoreVisible: string = "visible";
+
   constructor(private videoCoursesService: VideoCoursesServiceService) { }
 
   ngOnInit() {
-    this.videoCourses = this.videoCoursesService.getVideoCourses();
+    this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
   }
 
   loadMore = function(){
-    console.log("Load more");
+    this.videoCourceIndex++;
+
+    if(this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)){
+      this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
+      console.log("Load more");
+      return;
+    }
+    
+    this.loadMoreVisible = "hidden";
   }
 }
