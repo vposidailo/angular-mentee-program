@@ -16,4 +16,7 @@ export class VideoCoursesListComponentComponent implements OnInit {
     this.videoCourses = this.videoCoursesService.getVideoCourses();
   }
 
+  loadMore = function(){
+    console.log("Load more");
+  }
 }
