@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { VideoCourseItem } from '../model/video-course-item';
+import { VideoCourseItem } from '../../../model/video-course-item';
 
 @Injectable()
 
