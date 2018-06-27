@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { VideoCourseItem } from '../../model/video-course-item';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 
@@ -29,5 +29,9 @@ export class VideoCoursesListComponentComponent implements OnInit {
     }
     
     this.loadMoreVisible = "hidden";
+  }
+
+  deleteVideoCourseItem = function(event) {
+    console.log("Delete item parent call" + event);
   }
 }
