@@ -20,6 +20,7 @@ export class VideoCoursesListComponentComponent implements OnInit {
   }
 
   loadMore = function(){
+    console.log("test");
     this.videoCourceIndex++;
 
     if(this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)){

@@ -1,4 +1,4 @@
 <div>
   <app-video-courses-list-item-component *ngFor="let item of videoCourses" [VCItem] = "item" (deleteItem)="deleteVideoCourseItem($event)"></app-video-courses-list-item-component>
-  <button class="btn col-12" [style.visibility]="loadMoreVisible">Load more</button>  
+  <button class="btn col-12" [style.visibility]="loadMoreVisible" (click) = "loadMore()">Load more</button>  
 </div>

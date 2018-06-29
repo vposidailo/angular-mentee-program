@@ -5,6 +5,7 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { VideoCoursesListModule } from './video-courses-list/video-courses-list.module';
 import { ToolboxModule } from './toolbox/toolbox.module';
+import { VideoCoursesServiceService } from './_shared/services/video_courses_service/video-courses-service.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { ToolboxModule } from './toolbox/toolbox.module';
     VideoCoursesListModule,
     ToolboxModule
   ],
-  providers: [],
+  providers: [VideoCoursesServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

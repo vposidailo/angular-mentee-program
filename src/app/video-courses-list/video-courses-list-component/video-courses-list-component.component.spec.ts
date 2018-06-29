@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoCoursesListComponentComponent } from './video-courses-list-component.component';
+import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 
 describe('VideoCoursesListComponentComponent', () => {
   let component: VideoCoursesListComponentComponent;
@@ -8,7 +9,8 @@ describe('VideoCoursesListComponentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoCoursesListComponentComponent ]
+      declarations: [ VideoCoursesListComponentComponent ],
+      providers: [VideoCoursesServiceService]
     })
     .compileComponents();
   }));
