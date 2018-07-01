@@ -7,7 +7,7 @@ import { VideoCourseItem } from '../../model/video-course-item';
   styleUrls: ['./video-courses-list-item-component.component.css']
 })
 export class VideoCoursesListItemComponentComponent implements OnInit {
-  @Input() VCItem: VideoCourseItem;
+  @Input() public VCItem: VideoCourseItem;
   @Output() deleteItem: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
