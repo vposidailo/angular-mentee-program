@@ -6,7 +6,7 @@
                     <h5>{{VCItem.Title}}</h5>
                 </div>
                 <div class="col-4 video-course-duration">
-                    <p><b>Duration:</b>{{((VCItem.Duration - VCItem.Duration % 60) / 60) }} h {{VCItem.Duration % 60}} m<b>Release date:</b> {{VCItem.Creationdate | date}}</p>
+                    <p><b>Duration: </b>{{ durationCalculation(VCItem.Duration) }} <b>Release date:</b> {{VCItem.Creationdate | date}}</p>
                 </div>
             </div>
             <div class="row">

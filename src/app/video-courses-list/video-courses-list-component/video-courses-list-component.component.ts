@@ -20,7 +20,6 @@ export class VideoCoursesListComponentComponent implements OnInit {
   }
 
   loadMore = function(){
-    console.log("test");
     this.videoCourceIndex++;
 
     if(this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)){
@@ -32,7 +31,9 @@ export class VideoCoursesListComponentComponent implements OnInit {
     this.loadMoreVisible = "hidden";
   }
 
-  deleteVideoCourseItem = function(event) {
-    console.log("Delete item parent call" + event);
+  deleteVideoCourseItem = function(event): string {
+    var deleteVideoCourceItemMessage = "Delete: item parent call " + event;
+    console.log(deleteVideoCourceItemMessage);
+    return deleteVideoCourceItemMessage;
   }
 }

@@ -25,4 +25,10 @@ describe('VideoCoursesListComponentComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should delete item component', () => {
+    var actualValue = component.deleteVideoCourseItem("test");
+    var expectedValue = "Delete: item parent call test";
+    expect(expectedValue).toEqual(actualValue);
+  });
 });
