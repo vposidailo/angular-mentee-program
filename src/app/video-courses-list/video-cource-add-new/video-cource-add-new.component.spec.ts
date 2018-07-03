@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoCourceAddNewComponent } from './video-cource-add-new.component';
+import { By } from '@angular/platform-browser';
 
 describe('VideoCourceAddNewComponent', () => {
   let component: VideoCourceAddNewComponent;
@@ -21,5 +22,12 @@ describe('VideoCourceAddNewComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('shoud click add new video cource button', () => {
+    var addNewButton = fixture.debugElement.query(By.css('.btn'));
+    addNewButton.triggerEventHandler('click', null);
+
+    expect('Add new button click').toBeTruthy();
   });
 });

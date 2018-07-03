@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VideoCoursesListItemComponentComponent } from './video-courses-list-item-component.component';
+import { By } from '@angular/platform-browser';
+import { Button } from 'protractor';
 
 describe('VideoCoursesListItemComponentComponent', () => {
   let component: VideoCoursesListItemComponentComponent;
