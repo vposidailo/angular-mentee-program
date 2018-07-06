@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { VideoCoursesListModule } from './video-courses-list/video-courses-list.module';
 import { ToolboxModule } from './toolbox/toolbox.module';
 import { VideoCoursesServiceService } from './_shared/services/video_courses_service/video-courses-service.service';
-import { CreationDateDirective } from './_shared/derectives/creation-date.directive';
 
 
 @NgModule({

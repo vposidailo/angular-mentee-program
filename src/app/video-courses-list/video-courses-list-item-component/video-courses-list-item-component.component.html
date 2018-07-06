@@ -9,7 +9,8 @@
                     </div>
                 </div>
                 <div class="col-4 video-course-duration">
-                    <p><b>Duration: </b>{{ durationCalculation(VCItem.Duration) }} <b>Release date:</b> {{VCItem.Creationdate | date}}</p>
+                    <!-- <p><b>Duration: </b>{{ durationCalculation(VCItem.Duration) }} <b>Release date:</b> {{VCItem.Creationdate | date}}</p> -->
+                    <p><b>Duration: </b>{{ VCItem.Duration | duration }} <b>Release date:</b> {{VCItem.Creationdate | date}}</p>
                 </div>
             </div>
             <div class="row">

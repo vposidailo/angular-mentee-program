@@ -15,12 +15,6 @@ export class VideoCoursesListItemComponentComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  durationCalculation = function(duration: number) : string {
-    var durationString = ((duration - duration % 60) / 60) + "h " + duration % 60 + "m";
-    return durationString;
-  }
-
   deleteVideoCourseItem = function(){
     console.log("This is a child component");
     this.deleteItem.emit("test");
