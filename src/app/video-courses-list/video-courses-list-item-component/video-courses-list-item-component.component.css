@@ -5,3 +5,13 @@
 .video-course-duration {
     text-align: center;
 }
+
+.top-rated-image{
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+}
+
+.padding-left-inherit {
+    padding-left: inherit;
+}

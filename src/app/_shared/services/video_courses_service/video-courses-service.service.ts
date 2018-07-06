@@ -27,7 +27,7 @@ export class VideoCoursesServiceService {
       Description: "Tag Helpers are one of the new technologies in ASP.NET Core that making building web pages (Razor view pages) much easier and more intuitive for both designers and developers. In this course, ASP.NET Core Tag Helpers, you'll learn the fundamentals of Tag Helpers. First, you'll explore how to effectively use the 17 Tag Helpers built into ASP.NET Core on your Razor view pages to build forms. Next, you'll explore cache images. Finally, you'll customize anchor tags and build a JavaScript manager that takes advantage of many Tag Helper and ASP.NET Core features. By the end of the course, you'll be able to efficiently author both simple and advanced Tag Helpers.",
       Duration: 168,
       Creationdate: new Date(2017, 1, 20),
-      IsTopRated: false
+      IsTopRated: true
     }
   ];
 
