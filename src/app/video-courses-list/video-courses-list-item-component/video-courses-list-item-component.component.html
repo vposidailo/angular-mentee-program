@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-8">
                     <div class="row padding-left-inherit">
-                        <h5>{{VCItem.Title}}</h5>
+                        <h5>{{VCItem.Title | uppercase}}</h5>
                         <img id="HeaderLogoImage" src="/assets/Images/top_rated.png" class="top-rated-image" *ngIf="VCItem.IsTopRated"/>
                     </div>
                 </div>
