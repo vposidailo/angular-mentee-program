@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { VideoCourseItem } from '../../model/video-course-item';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
+import { VideoCourseItem } from '../../_shared/model/video-course-item';
 
 
 @Component({

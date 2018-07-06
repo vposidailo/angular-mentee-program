@@ -3,5 +3,6 @@ export interface VideoCourseItem {
     Title: string,
     Description: string,
     Duration: number,
-    Creationdate: Date
+    Creationdate: Date,
+    IsTopRated: boolean
 }
