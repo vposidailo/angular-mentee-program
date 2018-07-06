@@ -1,4 +1,4 @@
-<div class="alert" [ngClass]="{'alert-primary': VCItem.IsTopRated, 'alert-secondary': !VCItem.IsTopRated}">
+<div [ngClass]="{'alert': true, 'alert-primary': VCItem.IsTopRated, 'alert-secondary': !VCItem.IsTopRated}" appCreationDate [creationDate] = "VCItem.Creationdate">
     <div class=row>
         <div class="col-11">
             <div class="row">
@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="col-1">
-            <input type="button" value="Update" class="btn video-course-button-width">
-            <input type="button" value="Delete" (click)="deleteVideoCourseItem($event)" class="btn btn-danger video-course-button-width">        
+            <input type="button" value="Update" class="btn video-course-button-width" >
+            <input type="button" value="Delete" (click)="deleteVideoCourseItem($event)" class="btn btn-danger video-course-button-width"> 
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@ export class VideoCoursesServiceService {
       Title: "Practical LINQ",
       Description: "This course covers practical uses of Language Integrated Query (LINQ). With LINQ, you can search, sort, create, compare and analyze your data. And you can use LINQ to manipulate and shape your data for display in a user interface. With its common syntax, strong typing, Intellisense support, and transformational features, like the internet, you'll wonder how you ever coded without it. Enjoy!",
       Duration: 212,
-      Creationdate: new Date(2013, 8, 17),
+      Creationdate: new Date(2018, 6, 1),
       IsTopRated: true
     },
     {
@@ -18,7 +18,7 @@ export class VideoCoursesServiceService {
       Title: "Using GitFlow",
       Description: "GitFlow is a set of rules that gives users of Git a set of best practices to use when using Git. The set rules govern how to setup Git branches, which branches to have, when to create feature branches, when and what to tag, and when to merge and to which branch. The idea being that with a set of rules to follow using any source control system becomes easier. GitFlow doesn't add anything new to established workflows such as the feature branch workflow. What it does, though, is to give specific roles to different branches and defines how and when they should interact. The workflow uses feature branches as well as individual branches for preparing, maintaining, and recording releases. You also get the benefits of the feature branch workflow such as pull requests and more efficient collaboration.",
       Duration: 64,
-      Creationdate: new Date(2016, 2, 22),
+      Creationdate: new Date(2018, 6, 30),
       IsTopRated: false
     },
     {
