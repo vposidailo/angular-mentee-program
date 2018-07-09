@@ -34,10 +34,16 @@ export class VideoCoursesServiceService {
   constructor() { }
 
   public getVideoCourses(index: number) : VideoCourseItem[] {
+    
     return this.videoCourseSource.slice(0, index);
   }
 
+  public getAllVideoCourses(){
+    return this.videoCourseSource;
+  }
+
   public checkIfSourceHaveMoreElements(length: number): boolean {
+    console.log("Check checkIfSourceHaveMoreElements");
     return length <= this.videoCourseSource.length;
   }
 }

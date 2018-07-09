@@ -1,6 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 import { VideoCourseItem } from '../../_shared/model/video-course-item';
+import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
 
 
 @Component({
@@ -13,7 +14,12 @@ export class VideoCoursesListComponentComponent implements OnInit {
   private videoCourceIndex: number = 1;
   public loadMoreVisible: string = "visible";
 
-  constructor(private videoCoursesService: VideoCoursesServiceService) { }
+  constructor(private videoCoursesService: VideoCoursesServiceService, private searchByNamePipe: SearchByNamePipe) { }
+
+  @Input()
+  set searchVideoCource(searchVideoCource: string) {
+     this.videoCourses = this.searchByNamePipe.transform(this.videoCoursesService.getAllVideoCourses(), searchVideoCource);
+  }
 
   ngOnInit() {
     this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
@@ -24,7 +30,6 @@ export class VideoCoursesListComponentComponent implements OnInit {
 
     if(this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)){
       this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
-      console.log("Load more");
       return;
     }
     
@@ -33,7 +38,6 @@ export class VideoCoursesListComponentComponent implements OnInit {
 
   deleteVideoCourseItem = function(event): string {
     var deleteVideoCourceItemMessage = "Delete: item parent call " + event;
-    console.log(deleteVideoCourceItemMessage);
     return deleteVideoCourceItemMessage;
   }
 }

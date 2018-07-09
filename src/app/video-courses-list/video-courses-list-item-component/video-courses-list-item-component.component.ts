@@ -16,7 +16,6 @@ export class VideoCoursesListItemComponentComponent implements OnInit {
   }
 
   deleteVideoCourseItem = function(){
-    console.log("This is a child component");
     this.deleteItem.emit("test");
   }
 }

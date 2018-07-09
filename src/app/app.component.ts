@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  searchText: string = "";
+  
+  filterVideoCource = function(searchText: string) {
+    this.searchText = searchText;
+  }
 }

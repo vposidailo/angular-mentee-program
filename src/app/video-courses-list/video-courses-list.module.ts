@@ -6,13 +6,14 @@ import { VideoCoursesListItemComponentComponent } from './video-courses-list-ite
 import { CreationDateDirective } from '../_shared/derectives/creation-date.directive';
 import { VideoCourceOrderPipe } from '../_shared/pipes/video-cource-order.pipe';
 import { DurationPipe } from '../_shared/pipes/duration.pipe';
+import { SearchByNamePipe } from '../_shared/pipes/search-by-name.pipe';
 
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  providers: [],
+  providers: [SearchByNamePipe],
   declarations: [VideoCoursesListComponentComponent, VideoCoursesListItemComponentComponent, VideoCourceAddNewComponent, CreationDateDirective, VideoCourceOrderPipe, DurationPipe],
   exports:[VideoCoursesListComponentComponent, VideoCoursesListItemComponentComponent, VideoCourceAddNewComponent]
 })
