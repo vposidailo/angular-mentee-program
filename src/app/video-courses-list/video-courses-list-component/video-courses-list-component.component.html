@@ -1,21 +1,19 @@
 <div>
   <app-video-courses-list-item-component 
-    *ngFor="let item of videoCourses | videoCourceOrder: 'Creationdate' : 'desc'"
-    [VCItem] = "item" 
-    (deleteItem)="deleteVideoCourseItem($event)">
+      *ngFor="let item of videoCourses | videoCourceOrder: 'Creationdate' : 'desc'"
+      [VCItem] = "item" 
+      (deleteItem)="deleteVideoCourseItem($event)">
   </app-video-courses-list-item-component>
-
   <button 
-    class="btn col-12"
-    [style.visibility]="loadMoreVisible"
-    (click) = "loadMore()"
-    *ngIf="videoCourses.length > 0">
-      Load more
+      class="btn col-12"
+      [style.visibility]="loadMoreVisible"
+      (click) = "loadMore()"
+      *ngIf="videoCourses.length > 0">
+    Load more
   </button>
-
   <div 
-    class="text-center col-12 border border-primary rounded"
-    *ngIf="videoCourses.length === 0">
-      No Data, Feel free to add new cource!
+      class="text-center col-12 border border-primary rounded"
+      *ngIf="videoCourses.length === 0">
+    No Data, Feel free to add new cource!
   </div>
 </div>

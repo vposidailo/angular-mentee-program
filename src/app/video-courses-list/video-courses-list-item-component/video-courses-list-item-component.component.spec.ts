@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VideoCoursesListItemComponentComponent } from './video-courses-list-item-component.component';
-import { By } from '@angular/platform-browser';
-import { Button } from 'protractor';
+import { CreationDateDirective } from '../../_shared/derectives/creation-date.directive';
+import { DurationPipe } from '../../_shared/pipes/duration.pipe';
 
 describe('VideoCoursesListItemComponentComponent', () => {
   let component: VideoCoursesListItemComponentComponent;
@@ -9,7 +9,11 @@ describe('VideoCoursesListItemComponentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoCoursesListItemComponentComponent ]
+      declarations: [
+        VideoCoursesListItemComponentComponent,
+        CreationDateDirective,
+        DurationPipe
+      ]
     })
     .compileComponents();
   }));
