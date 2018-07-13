@@ -10,7 +10,15 @@ import { LoginModule } from '../login/login.module';
     CommonModule,
     LoginModule
   ],
-  declarations: [HeaderComponent, FooterComponent, BreadcrumbsComponent],
-  exports: [HeaderComponent, FooterComponent, BreadcrumbsComponent]
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    BreadcrumbsComponent
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    BreadcrumbsComponent
+  ]
 })
 export class CoreModule { }

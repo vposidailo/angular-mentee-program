@@ -14,7 +14,7 @@ describe('HeaderComponent', () => {
       imports: [
         LoginModule
       ],
-      providers:[LoginService]
+      providers: [LoginService]
     })
     .compileComponents();
   }));

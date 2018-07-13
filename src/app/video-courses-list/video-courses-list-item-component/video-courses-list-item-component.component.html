@@ -1,27 +1,50 @@
-<div [ngClass]="{'alert': true, 'alert-primary': VCItem.IsTopRated, 'alert-secondary': !VCItem.IsTopRated}" appCreationDate [creationDate] = "VCItem.Creationdate">
-    <div class=row>
+<div 
+    [ngClass]="{
+      'alert': true,
+      'alert-primary': VCItem.IsTopRated,
+      'alert-secondary': !VCItem.IsTopRated,
+      'border-solid-2px': true}"
+    appCreationDate
+    [creationDate] = "VCItem.Creationdate">
+      <div class=row>
         <div class="col-11">
             <div class="row">
                 <div class="col-8">
                     <div class="row padding-left-inherit">
                         <h5>{{VCItem.Title | uppercase}}</h5>
-                        <img id="HeaderLogoImage" src="/assets/Images/top_rated.png" class="top-rated-image" *ngIf="VCItem.IsTopRated"/>
+                        <img 
+                          id="HeaderLogoImage"
+                          src="/assets/Images/top_rated.png"
+                          class="top-rated-image"
+                          *ngIf="VCItem.IsTopRated"/>
                     </div>
                 </div>
                 <div class="col-4 video-course-duration">
-                    <!-- <p><b>Duration: </b>{{ durationCalculation(VCItem.Duration) }} <b>Release date:</b> {{VCItem.Creationdate | date}}</p> -->
-                    <p><b>Duration: </b>{{ VCItem.Duration | duration }} <b>Release date:</b> {{VCItem.Creationdate | date}}</p>
+                    <p>
+                        <b>Duration: </b> {{ VCItem.Duration | duration }}
+                        <b>Release date:</b> {{VCItem.Creationdate | date}}
+                    </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p>{{VCItem.Description}}</p>
+                    <p>
+                        {{VCItem.Description}}
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-1">
-            <input type="button" value="Update" class="btn video-course-button-width" >
-            <input type="button" value="Delete" (click)="deleteVideoCourseItem($event)" class="btn btn-danger video-course-button-width"> 
+            <input 
+              type="button"
+              value="Update"
+              class="btn video-course-button-width">
+
+            <input
+              type="button"
+              value="Delete"
+              (click)="deleteVideoCourseItem($event)"
+              class="btn btn-danger video-course-button-width">
         </div>
     </div>
 </div>

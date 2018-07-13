@@ -13,8 +13,21 @@ import { SearchByNamePipe } from '../_shared/pipes/search-by-name.pipe';
   imports: [
     CommonModule
   ],
-  providers: [SearchByNamePipe],
-  declarations: [VideoCoursesListComponentComponent, VideoCoursesListItemComponentComponent, VideoCourceAddNewComponent, CreationDateDirective, VideoCourceOrderPipe, DurationPipe],
-  exports:[VideoCoursesListComponentComponent, VideoCoursesListItemComponentComponent, VideoCourceAddNewComponent]
+  providers: [
+    SearchByNamePipe
+  ],
+  declarations: [
+    VideoCoursesListComponentComponent,
+    VideoCoursesListItemComponentComponent,
+    VideoCourceAddNewComponent,
+    CreationDateDirective,
+    VideoCourceOrderPipe,
+    DurationPipe
+  ],
+  exports: [
+    VideoCoursesListComponentComponent,
+    VideoCoursesListItemComponentComponent,
+    VideoCourceAddNewComponent
+  ]
 })
 export class VideoCoursesListModule { }

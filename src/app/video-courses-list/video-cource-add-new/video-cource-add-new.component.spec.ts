@@ -25,7 +25,7 @@ describe('VideoCourceAddNewComponent', () => {
   });
 
   it('shoud click add new video cource button', () => {
-    var addNewButton = fixture.debugElement.query(By.css('.btn'));
+    const addNewButton = fixture.debugElement.query(By.css('.btn'));
     addNewButton.triggerEventHandler('click', null);
 
     expect('Add new button click').toBeTruthy();

@@ -12,8 +12,7 @@ export class VideoCourceAddNewComponent implements OnInit {
   ngOnInit() {
   }
 
-  addNewVideoCourseItem = function(addNewButtonMessage): string {
-    console.log(addNewButtonMessage);
+  addNewVideoCourseItem(addNewButtonMessage: string): string {
     return addNewButtonMessage;
   }
 }

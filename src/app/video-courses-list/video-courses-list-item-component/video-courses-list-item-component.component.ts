@@ -15,7 +15,7 @@ export class VideoCoursesListItemComponentComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteVideoCourseItem = function(){
-    this.deleteItem.emit("test");
+  deleteVideoCourseItem() {
+    this.deleteItem.emit('test');
   }
 }

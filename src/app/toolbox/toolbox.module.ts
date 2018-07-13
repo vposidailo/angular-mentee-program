@@ -8,7 +8,11 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule
   ],
-  declarations: [ SearchComponent ],
-  exports: [ SearchComponent ]
+  declarations: [
+    SearchComponent
+  ],
+  exports: [
+    SearchComponent
+  ]
 })
 export class ToolboxModule { }

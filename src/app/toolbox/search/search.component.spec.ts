@@ -19,7 +19,7 @@ describe('SearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
-    component.searchVideoCource = jasmine.createSpy("searchVideoCource");
+    component.searchVideoCource = jasmine.createSpy('searchVideoCource');
 
     fixture.detectChanges();
   });
@@ -29,9 +29,9 @@ describe('SearchComponent', () => {
   });
 
   it('click search video cource button', () => {
-    var searchButton = fixture.debugElement.query(By.css('.col-1'));
+    const searchButton = fixture.debugElement.query(By.css('.col-1'));
     searchButton.triggerEventHandler('click', null);
-    
+
     expect(component.searchVideoCource).toHaveBeenCalled();
   });
 });

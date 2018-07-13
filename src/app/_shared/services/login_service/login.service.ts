@@ -7,11 +7,11 @@ export class LoginService {
 
   constructor() { }
 
-  public getUser() : User {
+  public getUser(): User {
     return {
       Id: 1,
-      FirstName: "Vitalii",
-      LastName: "Posidailo"
+      FirstName: 'Vitalii',
+      LastName: 'Posidailo'
     };
   }
 }

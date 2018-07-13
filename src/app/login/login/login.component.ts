@@ -9,7 +9,7 @@ import { User } from '../../_shared/model/user';
 })
 export class LoginComponent implements OnInit {
   public user: User = null;
-  
+
   constructor(private userService: LoginService) { }
 
   ngOnInit() {

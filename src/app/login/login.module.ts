@@ -7,8 +7,14 @@ import { LoginService } from '../_shared/services/login_service/login.service';
   imports: [
     CommonModule
   ],
-  providers:[LoginService],
-  declarations: [LoginComponent],
-  exports: [LoginComponent]
+  providers: [
+    LoginService
+  ],
+  declarations: [
+    LoginComponent
+  ],
+  exports: [
+    LoginComponent
+  ]
 })
 export class LoginModule { }

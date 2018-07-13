@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-.top-rated-image{
+.top-rated-image {
     width: 25px;
     height: 25px;
     margin-left: 5px;
@@ -14,4 +14,9 @@
 
 .padding-left-inherit {
     padding-left: inherit;
+}
+
+.border-solid-2px {
+    border-width:  2px;
+    border-style: solid;
 }

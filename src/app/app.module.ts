@@ -20,7 +20,11 @@ import { SearchByNamePipe } from './_shared/pipes/search-by-name.pipe';
     VideoCoursesListModule,
     ToolboxModule
   ],
-  providers: [VideoCoursesServiceService],
-  bootstrap: [AppComponent]
+  providers: [
+    VideoCoursesServiceService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

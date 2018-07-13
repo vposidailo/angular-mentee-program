@@ -9,15 +9,15 @@ export class SearchComponent implements OnInit {
 
   public searchText: string;
   @Output() public searchTextOutput: EventEmitter<string> = new EventEmitter<string>();
-  
-  constructor() { 
-    this.searchText = "";
+
+  constructor() {
+    this.searchText = '';
   }
 
   ngOnInit() {
   }
 
-  searchVideoCource = function(){
+  searchVideoCource() {
     this.searchTextOutput.emit(this.searchText);
   }
 }

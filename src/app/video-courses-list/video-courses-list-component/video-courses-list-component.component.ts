@@ -3,7 +3,6 @@ import { VideoCoursesServiceService } from '../../_shared/services/video_courses
 import { VideoCourseItem } from '../../_shared/model/video-course-item';
 import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
 
-
 @Component({
   selector: 'app-video-courses-list-component',
   templateUrl: './video-courses-list-component.component.html',
@@ -11,8 +10,8 @@ import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
 })
 export class VideoCoursesListComponentComponent implements OnInit {
   public videoCourses: VideoCourseItem[] = [];
-  private videoCourceIndex: number = 1;
-  public loadMoreVisible: string = "visible";
+  private videoCourceIndex = 1;
+  public loadMoreVisible = 'visible';
 
   constructor(private videoCoursesService: VideoCoursesServiceService, private searchByNamePipe: SearchByNamePipe) { }
 
@@ -25,19 +24,18 @@ export class VideoCoursesListComponentComponent implements OnInit {
     this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
   }
 
-  loadMore = function(){
+  loadMore() {
     this.videoCourceIndex++;
 
-    if(this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)){
+    if (this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)) {
       this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
       return;
     }
-    
-    this.loadMoreVisible = "hidden";
+
+    this.loadMoreVisible = 'hidden';
   }
 
-  deleteVideoCourseItem = function(event): string {
-    var deleteVideoCourceItemMessage = "Delete: item parent call " + event;
-    return deleteVideoCourceItemMessage;
+  deleteVideoCourseItem(event): string {
+    return 'Delete: item parent call ' + event;
   }
 }

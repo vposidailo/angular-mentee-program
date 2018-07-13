@@ -6,14 +6,28 @@ import { VideoCourseItem } from '../model/video-course-item';
 })
 export class VideoCourceOrderPipe implements PipeTransform {
 
-  transform(value: any, args?: any): VideoCourseItem[] {
-    if(args === 'undefined' || args === "" || args === "asc")
-    {
-      return value.sort(function(itemA, itemB){return itemA.Creationdate - itemB.Creationdate});
+  transform(value: any, field?: any, order?: any): VideoCourseItem[] {
+    console.log(field);
+    console.log(order);
+    if (typeof field === 'undefined' || field === '') {
+      return value;
     }
-    else if(args === "desc")
-    {
-      return value.sort(function(itemA, itemB){return itemB.Creationdate - itemA.Creationdate});
+
+    switch (field.toLowerCase()) {
+        case 'id':
+          return value.sort((itemA, itemB) => this.orderBy(itemA.id, itemB.id, order));
+        case 'duration':
+          return value.sort((itemA, itemB) => this.orderBy(itemA.Duration, itemB.Duration, order));
+        default:
+          return value.sort((itemA, itemB) => this.orderBy(itemA.Creationdate, itemB.Creationdate, order));
+    }
+  }
+
+  private orderBy(itemA: any, itemB: any, order: string): any {
+    if (typeof order === 'undefined' || order === '' || order === 'asc') {
+        return itemA - itemB;
+    } else if (order === 'desc') {
+        return itemB - itemA;
     }
   }
 }

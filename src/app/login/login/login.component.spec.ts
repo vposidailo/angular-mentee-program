@@ -9,8 +9,7 @@ describe('LoginComponent', () => {
   let loginService: Partial<LoginService>;
 
   beforeEach(async(() => {
-    loginService = { getUser: jasmine.createSpy("getUser").and.returnValue({Id: 1, FirstName: "Vitalii", LastName: "Posidailo" }) };
-    
+    loginService = { getUser: jasmine.createSpy('getUser').and.returnValue({Id: 1, FirstName: 'Vitalii', LastName: 'Posidailo' }) };
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       providers: [{ provide: LoginService, useValue: loginService }]
@@ -25,7 +24,6 @@ describe('LoginComponent', () => {
   });
 
   it('should create', () => {
-    console.log(component.user)
     expect(component).toBeTruthy();
   });
 

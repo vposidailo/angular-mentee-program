@@ -1,9 +1,18 @@
-<app-header></app-header>
-<app-breadcrumbs></app-breadcrumbs>
+<app-header>
+</app-header>
+<app-breadcrumbs>
+</app-breadcrumbs>
 <div class="row">
-    <app-search class="col-10" (searchTextOutput) = "filterVideoCource($event)"></app-search>
-    <app-video-cource-add-new class="col-2"></app-video-cource-add-new>
+    <app-search
+      class="col-10"
+      (searchTextOutput) = "filterVideoCource($event)">
+    </app-search>
+    <app-video-cource-add-new class="col-2"> 
+    </app-video-cource-add-new>
 </div>
 <!--The content below is only a placeholder and can be replaced.-->
-<app-video-courses-list-component [searchVideoCource] = "searchText"></app-video-courses-list-component>
-<app-footer></app-footer>
+<app-video-courses-list-component
+  [searchVideoCource] = "searchText">
+</app-video-courses-list-component>
+<app-footer>
+</app-footer>
