@@ -31,6 +31,60 @@ export class VideoCoursesServiceService {
       Duration: 168,
       Creationdate: new Date(2017, 1, 20),
       IsTopRated: true
+    },
+    {
+      id: 4,
+      Title: 'Accelerated C# Fundamentals',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Formerly titled "C# Fundamentals - Part 1," this course is designed to give C++ and Java developers an accelerated introduction to C# on the .NET platform. For a beginner-level introduction to C#, refer to "C# Fundamentals with C# 5.0.',
+      Duration: 377,
+      Creationdate: new Date(2010, 3, 26),
+      IsTopRated: true
+    },
+    {
+      id: 5,
+      Title: 'Angular: Getting Started',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Angular is one of the fastest, most popular open source web app frameworks today, and knowing how to use it is essential for developers. You will learn how to create components and user interfaces, data-binding, retrieving data using HTTP, and more.',
+      Duration: 340,
+      Creationdate: new Date(2018, 7, 11),
+      IsTopRated: true
+    },
+    {
+      id: 6,
+      Title: 'Getting Started with Building Bots with Microsoft\'s Bot Framework',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This course is an introduction to the Microsoft Bot Framework - a new centralized framework that allows you to create, edit and deploy Chatbots quickly and easily.',
+      Duration: 149,
+      Creationdate: new Date(2018, 7, 11),
+      IsTopRated: false
+    },
+    {
+      id: 7,
+      Title: 'Angular Fundamentals',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This course will teach you the fundamentals of working with the latest version of Angular. You will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.',
+      Duration: 575,
+      Creationdate: new Date(2018, 7, 3),
+      IsTopRated: false
+    },
+    {
+      id: 8,
+      Title: 'Become a Full-stack .NET Developer',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Have you always wanted to see how professional, experienced developers build an application from A to Z? This course will show you how. You\'ll build a real-world mini social networking application with ASP.NET MVC 5 and Entity Framework 6.',
+      Duration: 334,
+      Creationdate: new Date(2016, 3, 25),
+      IsTopRated: false
+    },
+    {
+      id: 9,
+      Title: 'Python Fundamentals',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Python Fundamentals gets you started with Python, a dynamic language popular for web development, big data, science, and scripting.',
+      Duration: 311,
+      Creationdate: new Date(2017, 9, 26),
+      IsTopRated: false
     }
   ];
 
@@ -42,6 +96,32 @@ export class VideoCoursesServiceService {
 
   public getAllVideoCourses() {
     return this.videoCourseSource;
+  }
+
+  public getVideoCoursesById(id: number): VideoCourseItem {
+    return this.videoCourseSource.find(item => item.id === id);
+  }
+
+  public createVideoCourseItem(item: VideoCourseItem): boolean {
+    return this.videoCourseSource.length < this.videoCourseSource.push(item);
+  }
+
+  public removeVideoCourseItem(videoCoursesArray: VideoCourseItem[], item: VideoCourseItem): VideoCourseItem[] {
+    const removedItemIndex = videoCoursesArray.findIndex(arrItem => arrItem.id === item.id);
+    videoCoursesArray.splice(removedItemIndex, 1);
+
+    return videoCoursesArray;
+  }
+
+  public updateVideoCourceItem(item: VideoCourseItem): boolean {
+    const updateItemIndex = this.videoCourseSource.findIndex(arrItem => arrItem.id === item.id);
+
+    if (updateItemIndex > -1) {
+      return false;
+    }
+
+    this.videoCourseSource[updateItemIndex] = item;
+    return true;
   }
 
   public checkIfSourceHaveMoreElements(length: number): boolean {

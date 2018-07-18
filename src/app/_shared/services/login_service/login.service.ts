@@ -4,14 +4,31 @@ import { User } from '../../model/user';
 
 @Injectable()
 export class LoginService {
-
+  private isAuth = false;
   constructor() { }
 
-  public getUser(): User {
-    return {
+  public login(firstName: string): User {
+    this.isAuth = true;
+    const storedUser = {
       Id: 1,
-      FirstName: 'Vitalii',
-      LastName: 'Posidailo'
+      FirstName: firstName,
+      LastName: ''
     };
+
+    window.localStorage.setItem('loginUser', JSON.stringify(storedUser));
+    return storedUser;
+  }
+
+  public logout() {
+    this.isAuth = false;
+    window.localStorage.removeItem('loginUser');
+  }
+
+  public isAuthenticated(): boolean {
+    return this.isAuth;
+  }
+
+  public getUserInfo(): User {
+    return JSON.parse(window.localStorage.getItem('loginUser'));
   }
 }

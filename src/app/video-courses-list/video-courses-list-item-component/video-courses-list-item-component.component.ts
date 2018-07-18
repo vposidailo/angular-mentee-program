@@ -8,7 +8,7 @@ import { VideoCourseItem } from '../../_shared/model/video-course-item';
 })
 export class VideoCoursesListItemComponentComponent implements OnInit {
   @Input() public VCItem: VideoCourseItem;
-  @Output() deleteItem: EventEmitter<string> = new EventEmitter<string>();
+  @Output() deleteItem: EventEmitter<VideoCourseItem> = new EventEmitter<VideoCourseItem>();
 
   constructor() { }
 
@@ -16,6 +16,6 @@ export class VideoCoursesListItemComponentComponent implements OnInit {
   }
 
   deleteVideoCourseItem() {
-    this.deleteItem.emit('test');
+    this.deleteItem.emit(this.VCItem);
   }
 }

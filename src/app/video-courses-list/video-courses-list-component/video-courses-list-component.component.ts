@@ -10,7 +10,7 @@ import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
 })
 export class VideoCoursesListComponentComponent implements OnInit {
   public videoCourses: VideoCourseItem[] = [];
-  private videoCourceIndex = 1;
+  private videoCourceIndex = 4;
   public loadMoreVisible = 'visible';
 
   constructor(private videoCoursesService: VideoCoursesServiceService, private searchByNamePipe: SearchByNamePipe) { }
@@ -25,17 +25,20 @@ export class VideoCoursesListComponentComponent implements OnInit {
   }
 
   loadMore() {
-    this.videoCourceIndex++;
+    this.videoCourceIndex += 3;
 
-    if (this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)) {
-      this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
-      return;
+    if (!this.videoCoursesService.checkIfSourceHaveMoreElements(this.videoCourceIndex)) {
+      this.loadMoreVisible = 'hidden';
     }
 
-    this.loadMoreVisible = 'hidden';
+    this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
   }
 
   deleteVideoCourseItem(event): string {
-    return 'Delete: item parent call ' + event;
+    const result = window.confirm('Do you really want to delete this course?');
+    if (result) {
+      this.videoCoursesService.removeVideoCourseItem(this.videoCourses, event);
+      return 'Delete: item parent call ' + event;
+    }
   }
 }
