@@ -6,6 +6,7 @@ import { ToolboxModule } from './toolbox/toolbox.module';
 import { VideoCoursesListModule } from './video-courses-list/video-courses-list.module';
 import { VideoCoursesServiceService } from './_shared/services/video_courses_service/video-courses-service.service';
 import { LoginService } from './_shared/services/login_service/login.service';
+import { LoginModule } from './login/login.module';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,7 +17,8 @@ describe('AppComponent', () => {
         BrowserModule,
         CoreModule,
         VideoCoursesListModule,
-        ToolboxModule
+        ToolboxModule,
+        LoginModule
       ],
       providers: [VideoCoursesServiceService],
     }).compileComponents();

@@ -9,7 +9,8 @@ describe('LoginComponent', () => {
   let loginService: Partial<LoginService>;
 
   beforeEach(async(() => {
-    loginService = { getUserInfo: jasmine.createSpy('getUserInfo').and.returnValue({Id: 1, FirstName: 'Vitalii', LastName: 'Posidailo' }) };
+    // tslint:disable-next-line:max-line-length
+    loginService = { getUserInfo: jasmine.createSpy('getUserInfo').and.returnValue({Id: 1, FirstName: 'Vitalii', LastName: 'Posidailo' }), isAuthenticated: jasmine.createSpy('isAuthenticated').and.returnValue(false)};
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       providers: [{ provide: LoginService, useValue: loginService }]
