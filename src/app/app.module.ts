@@ -7,6 +7,7 @@ import { VideoCoursesListModule } from './video-courses-list/video-courses-list.
 import { ToolboxModule } from './toolbox/toolbox.module';
 import { VideoCoursesServiceService } from './_shared/services/video_courses_service/video-courses-service.service';
 import { SearchByNamePipe } from './_shared/pipes/search-by-name.pipe';
+import { LoginModule } from './login/login.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SearchByNamePipe } from './_shared/pipes/search-by-name.pipe';
     BrowserModule,
     CoreModule,
     VideoCoursesListModule,
-    ToolboxModule
+    ToolboxModule,
+    LoginModule
   ],
   providers: [
     VideoCoursesServiceService

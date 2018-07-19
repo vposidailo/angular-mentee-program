@@ -9,7 +9,8 @@ describe('LoginComponent', () => {
   let loginService: Partial<LoginService>;
 
   beforeEach(async(() => {
-    loginService = { getUser: jasmine.createSpy('getUser').and.returnValue({Id: 1, FirstName: 'Vitalii', LastName: 'Posidailo' }) };
+    // tslint:disable-next-line:max-line-length
+    loginService = { getUserInfo: jasmine.createSpy('getUserInfo').and.returnValue({Id: 1, FirstName: 'Vitalii', LastName: 'Posidailo' }), isAuthenticated: jasmine.createSpy('isAuthenticated').and.returnValue(false)};
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       providers: [{ provide: LoginService, useValue: loginService }]
@@ -29,6 +30,6 @@ describe('LoginComponent', () => {
 
   it('should call user service load user', () => {
     component.ngOnInit();
-    expect(loginService.getUser).toHaveBeenCalled();
+    expect(loginService.getUserInfo).toHaveBeenCalled();
   });
 });
