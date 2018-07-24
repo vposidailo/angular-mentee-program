@@ -37,7 +37,7 @@ export class VideoCoursesListComponentComponent implements OnInit {
   deleteVideoCourseItem(event): string {
     const result = window.confirm('Do you really want to delete this course?');
     if (result) {
-      this.videoCoursesService.removeVideoCourseItem(this.videoCourses, event);
+      this.videoCourses = this.videoCoursesService.removeVideoCourseItem(event);
       return 'Delete: item parent call ' + event;
     }
   }

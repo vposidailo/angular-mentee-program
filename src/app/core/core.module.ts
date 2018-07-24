@@ -20,6 +20,9 @@ import { LoginService } from '../_shared/services/login_service/login.service';
     HeaderComponent,
     FooterComponent,
     BreadcrumbsComponent
+  ],
+  providers: [
+    LoginService
   ]
 })
 export class CoreModule { }

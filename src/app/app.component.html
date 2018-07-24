@@ -1,25 +1,25 @@
 <app-header>
 </app-header>
 <app-breadcrumbs 
-    *ngIf="checkIfUserLogin()">
+    *ngIf="checkIfUserLogin">
 </app-breadcrumbs>
 <app-loginform 
-    *ngIf="!checkIfUserLogin()"></app-loginform>
+    *ngIf="!checkIfUserLogin"></app-loginform>
 <div 
     class="row">
   <app-search
       class="col-10"
       (searchTextOutput) = "filterVideoCource($event)"
-      *ngIf="checkIfUserLogin()" >
+      *ngIf="checkIfUserLogin" >
   </app-search>
   <app-video-cource-add-new 
       class="col-2"
-      *ngIf="checkIfUserLogin()">
+      *ngIf="checkIfUserLogin">
   </app-video-cource-add-new>
 </div>
 <app-video-courses-list-component
     [searchVideoCource] = "searchText"
-    *ngIf="checkIfUserLogin()">
+    *ngIf="checkIfUserLogin">
 </app-video-courses-list-component>
 <app-footer>
 </app-footer>
