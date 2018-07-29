@@ -1,3 +1,98 @@
-<p>
-  video-course-add-new-item works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 class="text-center">
+            Adding new video cource Item
+          </h3>
+          <div class="form form-signup" role="form">
+            <div class="form-group col-md-12 padding-left-0px">
+              <label>
+                Title:
+              </label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-pencil">
+                  </span>
+                </span>
+                <input 
+                    type="text"
+                    class="form-control"
+                    placeholder="Video cource title"
+                    [(ngModel)]="videoCourseTitle" />
+              </div>
+            </div>
+            <div class="form-group col-md-12 padding-left-0px">
+              <label>
+                Description:
+              </label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-pencil">
+                  </span>
+                </span>
+                <textarea 
+                    class="form-control description"
+                    placeholder="Description"
+                    [(ngModel)]="videoCourseDescription">
+                </textarea>
+              </div>
+            </div>
+            <div class="form-group col-md-6 padding-left-0px">
+              <label>
+                Date:
+              </label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-pencil">
+                  </span>
+                </span>
+                <input 
+                type="text"
+                class="form-control"
+                placeholder="Release date" />
+              </div>
+            </div>
+            <div class="form-group col-md-6 padding-left-0px">
+              <label>
+                Duration:
+              </label>
+              <div class="input-group">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                  <input type="Text" class="form-control" placeholder="Duration" />
+              </div>
+            </div>
+            <div class="form-group col-md-12 padding-left-0px">
+                <label>
+                  Autors:
+                </label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-pencil">
+                    </span>
+                  </span>
+                  <input 
+                      type="text"
+                      class="form-control"
+                      placeholder="Autors" />
+                </div>
+            </div>
+            <div class="form-group">
+              <button 
+                  class="btn btn-sm btn-primary col-md-2"
+                  (click)="newItemVideoCourse()">
+                Save
+              </button>
+              <button 
+                  class="btn btn-sm btn-secondary col-md-2 align-self-end"
+                  (click)="rejectNewItemVideoCourse()">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

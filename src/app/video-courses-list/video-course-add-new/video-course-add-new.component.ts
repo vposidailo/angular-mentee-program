@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-video-course-add-new',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./video-course-add-new.component.css']
 })
 export class VideoCourseAddNewComponent implements OnInit {
+  @Output() public addNewItemOutput: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -13,6 +14,8 @@ export class VideoCourseAddNewComponent implements OnInit {
   }
 
   addNewVideoCourseItem(addNewButtonMessage: string): string {
+    console.log('true');
+    this.addNewItemOutput.emit(true);
     return addNewButtonMessage;
   }
 }

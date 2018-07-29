@@ -8,10 +8,12 @@ import { VideoCourceOrderPipe } from '../_shared/pipes/video-cource-order.pipe';
 import { DurationPipe } from '../_shared/pipes/duration.pipe';
 import { SearchByNamePipe } from '../_shared/pipes/search-by-name.pipe';
 import { VideoCourseAddNewItemComponent } from './video-course-add-new-item/video-course-add-new-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     SearchByNamePipe
