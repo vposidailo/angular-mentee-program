@@ -15,7 +15,6 @@ export class LoginformComponent implements OnInit {
   }
 
   loginClick() {
-    this.userService.login('Vitalii');
+    this.userService.login(this.username);
   }
-
 }

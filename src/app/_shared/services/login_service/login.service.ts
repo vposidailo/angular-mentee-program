@@ -12,7 +12,7 @@ export class LoginService {
     const storedUser = {
       Id: 1,
       FirstName: firstName,
-      LastName: ''
+      LastName: 'Posidailo'
     };
 
     window.localStorage.setItem('loginUser', JSON.stringify(storedUser));

@@ -102,26 +102,27 @@ export class VideoCoursesServiceService {
     return this.videoCourseSource.find(item => item.id === id);
   }
 
-  public createVideoCourseItem(item: VideoCourseItem): boolean {
-    return this.videoCourseSource.length < this.videoCourseSource.push(item);
+  public createVideoCourseItem(item: VideoCourseItem): VideoCourseItem[] {
+    this.videoCourseSource.push(item);
+    return this.videoCourseSource;
   }
 
-  public removeVideoCourseItem(videoCoursesArray: VideoCourseItem[], item: VideoCourseItem): VideoCourseItem[] {
-    const removedItemIndex = videoCoursesArray.findIndex(arrItem => arrItem.id === item.id);
-    videoCoursesArray.splice(removedItemIndex, 1);
+  public removeVideoCourseItem(item: VideoCourseItem): VideoCourseItem[] {
+    const removedItemIndex = this.videoCourseSource.findIndex(arrItem => arrItem.id === item.id);
+    this.videoCourseSource.splice(removedItemIndex, 1);
 
-    return videoCoursesArray;
+    return this.videoCourseSource;
   }
 
-  public updateVideoCourceItem(item: VideoCourseItem): boolean {
+  public updateVideoCourceItem(item: VideoCourseItem): VideoCourseItem[] {
     const updateItemIndex = this.videoCourseSource.findIndex(arrItem => arrItem.id === item.id);
 
     if (updateItemIndex > -1) {
-      return false;
+      return this.videoCourseSource;
     }
 
     this.videoCourseSource[updateItemIndex] = item;
-    return true;
+    return this.videoCourseSource;
   }
 
   public checkIfSourceHaveMoreElements(length: number): boolean {
