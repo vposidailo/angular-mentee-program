@@ -12,10 +12,10 @@
       (searchTextOutput) = "filterVideoCource($event)"
       *ngIf="checkIfUserLogin()" >
   </app-search>
-  <app-video-cource-add-new 
+  <app-video-course-add-new 
       class="col-2"
       *ngIf="checkIfUserLogin()">
-  </app-video-cource-add-new>
+  </app-video-course-add-new>
 </div>
 <app-video-courses-list-component
     [searchVideoCource] = "searchText"

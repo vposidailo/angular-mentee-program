@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-video-cource-add-new',
-  templateUrl: './video-cource-add-new.component.html',
-  styleUrls: ['./video-cource-add-new.component.css']
+  selector: 'app-video-course-add-new',
+  templateUrl: './video-course-add-new.component.html',
+  styleUrls: ['./video-course-add-new.component.css']
 })
-export class VideoCourceAddNewComponent implements OnInit {
+export class VideoCourseAddNewComponent implements OnInit {
 
   constructor() { }
 

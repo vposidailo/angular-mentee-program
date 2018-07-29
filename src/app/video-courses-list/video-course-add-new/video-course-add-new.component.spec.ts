@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VideoCourceAddNewComponent } from './video-cource-add-new.component';
+import { VideoCourseAddNewComponent } from './video-course-add-new.component';
 import { By } from '@angular/platform-browser';
 
-describe('VideoCourceAddNewComponent', () => {
-  let component: VideoCourceAddNewComponent;
-  let fixture: ComponentFixture<VideoCourceAddNewComponent>;
+describe('VideoCourseAddNewComponent', () => {
+  let component: VideoCourseAddNewComponent;
+  let fixture: ComponentFixture<VideoCourseAddNewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoCourceAddNewComponent ]
+      declarations: [ VideoCourseAddNewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoCourceAddNewComponent);
+    fixture = TestBed.createComponent(VideoCourseAddNewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
