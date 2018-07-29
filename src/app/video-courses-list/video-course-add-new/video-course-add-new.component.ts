@@ -14,7 +14,6 @@ export class VideoCourseAddNewComponent implements OnInit {
   }
 
   addNewVideoCourseItem(addNewButtonMessage: string): string {
-    console.log('true');
     this.addNewItemOutput.emit(true);
     return addNewButtonMessage;
   }

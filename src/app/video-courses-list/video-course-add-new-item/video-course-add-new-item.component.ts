@@ -21,12 +21,14 @@ export class VideoCourseAddNewItemComponent implements OnInit {
   }
 
   newItemVideoCourse() {
-    console.log('add new item');
   }
 
   rejectNewItemVideoCourse() {
     this.rejectAddingNewVideoCourseItemOutput.emit(false);
-    console.log('add new item');
+  }
+
+  releaseDateChanged(event) {
+    this.videoCourseReleaseDate = event;
   }
 
 }

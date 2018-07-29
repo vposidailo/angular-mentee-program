@@ -9,14 +9,19 @@ import { DurationPipe } from '../_shared/pipes/duration.pipe';
 import { SearchByNamePipe } from '../_shared/pipes/search-by-name.pipe';
 import { VideoCourseAddNewItemComponent } from './video-course-add-new-item/video-course-add-new-item.component';
 import { FormsModule } from '@angular/forms';
+import { CoreModule } from '../core/core.module';
+import { PipesModule } from '../_shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    CoreModule,
+    PipesModule
   ],
   providers: [
-    SearchByNamePipe
+    SearchByNamePipe,
+    DurationPipe
   ],
   declarations: [
     VideoCoursesListComponentComponent,
@@ -24,8 +29,7 @@ import { FormsModule } from '@angular/forms';
     VideoCourseAddNewComponent,
     VideoCourseAddNewItemComponent,
     CreationDateDirective,
-    VideoCourceOrderPipe,
-    DurationPipe
+    VideoCourceOrderPipe
   ],
   exports: [
     VideoCoursesListComponentComponent,

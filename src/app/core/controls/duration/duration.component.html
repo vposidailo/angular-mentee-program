@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+      <input 
+          type="Text" 
+          class="form-control col-6" 
+          placeholder="Duration" 
+          [(ngModel)] = "minutes"
+          (changed) = "durationChanged()"/>
+      <span class="col-6">
+        {{ minutes | duration }}
+      </span>
+  </div>
+</div>
