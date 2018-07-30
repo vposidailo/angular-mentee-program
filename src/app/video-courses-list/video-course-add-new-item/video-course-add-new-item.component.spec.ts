@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoCourseAddNewItemComponent } from './video-course-add-new-item.component';
+import { FormsModule } from '@angular/forms';
+import { CoreModule } from '../../core/core.module';
 
 describe('VideoCourseAddNewItemComponent', () => {
   let component: VideoCourseAddNewItemComponent;
@@ -8,7 +10,8 @@ describe('VideoCourseAddNewItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoCourseAddNewItemComponent ]
+      declarations: [ VideoCourseAddNewItemComponent ],
+      imports: [ FormsModule, CoreModule ]
     })
     .compileComponents();
   }));

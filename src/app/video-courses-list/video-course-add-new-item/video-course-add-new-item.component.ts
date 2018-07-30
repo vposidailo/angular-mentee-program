@@ -31,4 +31,12 @@ export class VideoCourseAddNewItemComponent implements OnInit {
     this.videoCourseReleaseDate = event;
   }
 
+  durationChanged(event) {
+    this.videoCourseDuration = event;
+  }
+
+  authorChanged(event) {
+    this.videoCourseAuthors = event;
+  }
+
 }

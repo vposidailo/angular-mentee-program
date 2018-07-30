@@ -1,23 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DurationComponent } from './duration.component';
+import { AuthorComponent } from './author.component';
 import { FormsModule } from '@angular/forms';
-import { PipesModule } from '../../../_shared/pipes/pipes.module';
 
-describe('DurationComponent', () => {
-  let component: DurationComponent;
-  let fixture: ComponentFixture<DurationComponent>;
+describe('AuthorComponent', () => {
+  let component: AuthorComponent;
+  let fixture: ComponentFixture<AuthorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DurationComponent ],
-      imports: [ FormsModule, PipesModule ]
+      declarations: [ AuthorComponent ],
+      imports: [ FormsModule ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DurationComponent);
+    fixture = TestBed.createComponent(AuthorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

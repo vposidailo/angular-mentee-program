@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DurationComponent } from './controls/duration/duration.component';
 import { DurationPipe } from '../_shared/pipes/duration.pipe';
 import { PipesModule } from '../_shared/pipes/pipes.module';
+import { AuthorComponent } from './controls/author/author.component';
 
 @NgModule({
   imports: [
@@ -27,14 +28,16 @@ import { PipesModule } from '../_shared/pipes/pipes.module';
     FooterComponent,
     BreadcrumbsComponent,
     DateTimePickerComponent,
-    DurationComponent
+    DurationComponent,
+    AuthorComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     BreadcrumbsComponent,
     DateTimePickerComponent,
-    DurationComponent
+    DurationComponent,
+    AuthorComponent
   ]
 })
 export class CoreModule { }

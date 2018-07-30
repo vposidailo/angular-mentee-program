@@ -58,14 +58,10 @@
                 Duration:
               </label>
               <div class="input-group">
-                <app-duration>
+                <app-duration
+                    (durationOutput) = "durationChanged($event)">
                 </app-duration>
               </div>
-              <!-- 
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                  <input type="Text" class="form-control" placeholder="Duration" />
-                  
-              </div> -->
             </div>
             <div class="form-group col-md-12 padding-left-0px">
                 <label>
@@ -76,10 +72,9 @@
                     <span class="glyphicon glyphicon-pencil">
                     </span>
                   </span>
-                  <input 
-                      type="text"
-                      class="form-control"
-                      placeholder="Autors" />
+                  <app-author
+                      (authorOutput) = "authorChanged($event)">
+                  </app-author>
                 </div>
             </div>
             <div class="form-group">
