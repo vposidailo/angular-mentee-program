@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { VideoCourseItem } from '../../_shared/model/video-course-item';
+import { DurationPipe } from '../../_shared/pipes/duration.pipe';
 
 @Component({
   selector: 'app-video-courses-list-item-component',

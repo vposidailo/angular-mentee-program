@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoginService } from './_shared/services/login_service/login.service';
 import { User } from './_shared/model/user';
 
@@ -10,6 +10,7 @@ import { User } from './_shared/model/user';
 export class AppComponent {
   title = 'app';
   searchText = '';
+  addNewItemPage = false;
 
   constructor(private userService: LoginService) { }
 
@@ -19,5 +20,9 @@ export class AppComponent {
 
   filterVideoCource (searchText: string) {
     this.searchText = searchText;
+  }
+
+  newVideoCourseItemAction(event) {
+    this.addNewItemPage = event;
   }
 }

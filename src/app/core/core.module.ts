@@ -5,24 +5,39 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginModule } from '../login/login.module';
 import { LoginService } from '../_shared/services/login_service/login.service';
+import { DateTimePickerComponent } from './controls/date-time-picker/date-time-picker.component';
+import { FormsModule } from '@angular/forms';
+import { DurationComponent } from './controls/duration/duration.component';
+import { DurationPipe } from '../_shared/pipes/duration.pipe';
+import { PipesModule } from '../_shared/pipes/pipes.module';
+import { AuthorComponent } from './controls/author/author.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    LoginModule
+    LoginModule,
+    FormsModule,
+    PipesModule
+  ],
+  providers: [
+    LoginService,
+    DurationPipe
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    DateTimePickerComponent,
+    DurationComponent,
+    AuthorComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    BreadcrumbsComponent
-  ],
-  providers: [
-    LoginService
+    BreadcrumbsComponent,
+    DateTimePickerComponent,
+    DurationComponent,
+    AuthorComponent
   ]
 })
 export class CoreModule { }
