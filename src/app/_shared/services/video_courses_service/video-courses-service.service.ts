@@ -99,7 +99,7 @@ export class VideoCoursesServiceService {
   }
 
   public getVideoCoursesById(id: number): VideoCourseItem {
-    return this.videoCourseSource.find(item => item.id === id);
+    return this.videoCourseSource.find(element => element.id === id);
   }
 
   public createVideoCourseItem(item: VideoCourseItem): VideoCourseItem[] {

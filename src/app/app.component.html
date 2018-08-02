@@ -1,9 +1,10 @@
 <app-header>
 </app-header>
 <app-breadcrumbs 
-    *ngIf="checkIfUserLogin && !addNewItemPage">
+    *ngIf="checkIfUserLogin">
 </app-breadcrumbs>
-<app-loginform 
+<router-outlet></router-outlet>
+<!-- <app-loginform 
     *ngIf="!checkIfUserLogin">
 </app-loginform>
 <div 
@@ -26,6 +27,6 @@
 <app-video-course-add-new-item
     (rejectAddingNewVideoCourseItemOutput) = "newVideoCourseItemAction($event)"
     *ngIf="checkIfUserLogin && addNewItemPage">
-</app-video-course-add-new-item>
+</app-video-course-add-new-item> -->
 <app-footer>
-</app-footer> 
+</app-footer>

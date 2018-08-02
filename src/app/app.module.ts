@@ -8,7 +8,8 @@ import { ToolboxModule } from './toolbox/toolbox.module';
 import { VideoCoursesServiceService } from './_shared/services/video_courses_service/video-courses-service.service';
 import { SearchByNamePipe } from './_shared/pipes/search-by-name.pipe';
 import { LoginModule } from './login/login.module';
-
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './_shared/routes/app.routes';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginModule } from './login/login.module';
     CoreModule,
     VideoCoursesListModule,
     ToolboxModule,
-    LoginModule
+    LoginModule,
+    RouterModule.forRoot(ROUTES, {useHash: true})
   ],
   providers: [
     VideoCoursesServiceService

@@ -5,18 +5,23 @@ import { User } from '../../model/user';
 @Injectable()
 export class LoginService {
   private isAuth = false;
+  private loginedUser = <User> { };
   constructor() { }
 
-  public login(firstName: string): User {
-    this.isAuth = true;
-    const storedUser = {
-      Id: 1,
-      FirstName: firstName,
-      LastName: 'Posidailo'
-    };
+  public login(email: string, password: string): User {
+    const userCredential = this.getUserCredential();
+    if (userCredential.Email === email
+      && userCredential.Password === password) {
+      this.isAuth = true;
 
-    window.localStorage.setItem('loginUser', JSON.stringify(storedUser));
-    return storedUser;
+      this.loginedUser.Id = 1;
+      this.loginedUser.Email = email;
+      this.loginedUser.FirstName = 'Vitalii';
+      this.loginedUser.LastName = 'Posidailo';
+    }
+
+    window.localStorage.setItem('loginUser', JSON.stringify(this.loginedUser));
+    return this.loginedUser;
   }
 
   public logout() {
@@ -29,6 +34,15 @@ export class LoginService {
   }
 
   public getUserInfo(): User {
-    return JSON.parse(window.localStorage.getItem('loginUser'));
+    if (this.isAuth === true) {
+      return JSON.parse(window.localStorage.getItem('loginUser'));
+    } else {
+      return {Id: 0, Email: '', FirstName: '', LastName: ''};
+    }
+
+  }
+
+  public getUserCredential(): any {
+    return JSON.parse(window.localStorage.getItem('userCredential'));
   }
 }
