@@ -1,3 +1,17 @@
+<app-breadcrumbs>
+</app-breadcrumbs>
+<div 
+    class="row">
+  <app-search
+      class="col-10"
+      (searchTextOutput) = "filterVideoCource($event)">
+  </app-search>
+  <!-- <app-video-course-add-new 
+      class="col-2"
+      *ngIf="checkIfUserLogin  && !addNewItemPage"
+      (addNewItemOutput)="newVideoCourseItemAction($event)">
+  </app-video-course-add-new> -->
+</div>
 <div>
   <app-video-courses-list-item-component 
       *ngFor="let item of videoCourses | videoCourceOrder: 'Creationdate' : 'desc'"

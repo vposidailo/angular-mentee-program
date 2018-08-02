@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-video-course-add-new',
@@ -6,15 +7,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./video-course-add-new.component.css']
 })
 export class VideoCourseAddNewComponent implements OnInit {
-  @Output() public addNewItemOutput: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
-  addNewVideoCourseItem(addNewButtonMessage: string): string {
-    this.addNewItemOutput.emit(true);
-    return addNewButtonMessage;
+  addNewVideoCourseItem() {
+    this.router.navigateByUrl('/courses/new');
   }
 }

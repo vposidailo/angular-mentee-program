@@ -1,8 +1,9 @@
 <input
     type="button"
-    Value="Log off"
+    value="Log Off"
     class="header-float-right-and-center"
-    (click)="logoff()"/>
+    (click)="logoff()"
+    *ngIf="checkIfUserLogin"/>
 <span class="header-float-right-and-center header-login-information" *ngIf="checkIfUserLogin">
   User Login: {{ user.FirstName }} {{ user.LastName }}
 </span>

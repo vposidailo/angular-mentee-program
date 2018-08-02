@@ -10,22 +10,22 @@ import { SearchByNamePipe } from './_shared/pipes/search-by-name.pipe';
 import { LoginModule } from './login/login.module';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './_shared/routes/app.routes';
+import { AuthGuard } from './_shared/guards/auth-guard.guard';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SearchByNamePipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
     VideoCoursesListModule,
-    ToolboxModule,
     LoginModule,
     RouterModule.forRoot(ROUTES, {useHash: true})
   ],
   providers: [
-    VideoCoursesServiceService
+    VideoCoursesServiceService,
+    AuthGuard
   ],
   bootstrap: [
     AppComponent
