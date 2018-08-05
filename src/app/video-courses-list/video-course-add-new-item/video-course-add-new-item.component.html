@@ -1,4 +1,4 @@
-<app-breadcrumbs>
+<app-breadcrumbs [label] = "breadcrumb">
 </app-breadcrumbs>
 <div class="container">
   <div class="row">
@@ -51,7 +51,8 @@
                   </span>
                 </span>
                 <app-date-time-picker 
-                    (releaseDateOutput) = "releaseDateChanged($event)">
+                    (releaseDateOutput) = "releaseDateChanged($event)"
+                    [releaseDate] = "videoCourseReleaseDate" >
                 </app-date-time-picker>
               </div>
             </div>
@@ -61,6 +62,7 @@
               </label>
               <div class="input-group">
                 <app-duration
+                    [minutes] = "videoCourseDuration"
                     (durationOutput) = "durationChanged($event)">
                 </app-duration>
               </div>

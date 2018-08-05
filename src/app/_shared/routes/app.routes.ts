@@ -29,6 +29,11 @@ export const ROUTES: Routes = [
         component: VideoCourseAddNewItemComponent, pathMatch: 'full',
         canActivate: [ IsAuthGuard ]
     },
+    {
+        path: 'courses/:id',
+        component: VideoCourseAddNewItemComponent, pathMatch: 'full',
+        canActivate: [ IsAuthGuard ]
+    },
     // {
     //     path: 'courses/:id',
     //     component: VideoCourseAddNewItemComponent,

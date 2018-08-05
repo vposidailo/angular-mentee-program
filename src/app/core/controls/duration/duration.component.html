@@ -5,7 +5,7 @@
           class="form-control col-6" 
           placeholder="Duration" 
           [(ngModel)] = "minutes"
-          (changed) = "durationChanged()"/>
+          (change) = "durationChanged()"/>
       <span class="col-6">
         {{ minutes | duration }}
       </span>

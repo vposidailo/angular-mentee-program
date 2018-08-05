@@ -15,6 +15,8 @@ export class VideoCoursesListComponentComponent implements OnInit {
   private videoCourceIndex = 4;
   public loadMoreVisible = 'visible';
 
+  public breadcrumb = '';
+
   private id: number;
   private subscription: Subscription;
 
@@ -29,6 +31,8 @@ export class VideoCoursesListComponentComponent implements OnInit {
 
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(data => this.id = Number(data['id']));
+
+    this.breadcrumb = 'Courses';
     if (typeof(this.id) !== 'undefined' && this.id !== 0 && !isNaN(this.id)) {
       const foundObject = this.videoCoursesService.getVideoCoursesById(this.id);
       this.videoCourses = typeof(foundObject) === 'undefined' ? [] : [ foundObject ];

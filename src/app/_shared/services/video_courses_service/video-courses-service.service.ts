@@ -105,7 +105,6 @@ export class VideoCoursesServiceService {
   public createVideoCourseItem(item: VideoCourseItem): VideoCourseItem[] {
     item.id = this.videoCourseSource.length + 1;
     this.videoCourseSource.push(item);
-    debugger;
     return this.videoCourseSource;
   }
 

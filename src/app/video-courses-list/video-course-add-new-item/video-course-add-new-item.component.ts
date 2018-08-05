@@ -18,11 +18,24 @@ export class VideoCourseAddNewItemComponent implements OnInit {
   public videoCourseDuration = 0;
   public videoCourseAuthors = '';
 
+  public breadcrumb = '';
+
   @Output() public newVideoCourseItem: EventEmitter<VideoCourseItem> = new EventEmitter<VideoCourseItem>();
   constructor(private router: Router, private activateRoute: ActivatedRoute, private videoCourceService: VideoCoursesServiceService) { }
 
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(data => this.videoCourceId = Number(data['id']));
+    this.breadcrumb = 'Course/New Video Course Item';
+
+    if (!isNaN(this.videoCourceId) && this.videoCourceId !== 0) {
+      const currentVideoCourse = this.videoCourceService.getVideoCoursesById(this.videoCourceId);
+      this.videoCourseTitle = currentVideoCourse.Title;
+      this.videoCourseDescription = currentVideoCourse.Description;
+      this.videoCourseReleaseDate = currentVideoCourse.Creationdate.toLocaleDateString('en-GB');
+      this.videoCourseDuration = currentVideoCourse.Duration;
+
+      this.breadcrumb = 'Course/' + this.videoCourseTitle;
+    }
   }
 
   newItemVideoCourse() {
@@ -31,7 +44,7 @@ export class VideoCourseAddNewItemComponent implements OnInit {
       Title: this.videoCourseTitle,
       Description: this.videoCourseDescription,
       Duration: this.videoCourseDuration,
-      Creationdate: new Date(this.videoCourseReleaseDate),
+      Creationdate: new Date(this.videoCourseReleaseDate.split('/').reverse().join('/')),
       IsTopRated: false
     };
 
