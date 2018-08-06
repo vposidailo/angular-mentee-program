@@ -11,13 +11,15 @@ import { VideoCourseAddNewItemComponent } from './video-course-add-new-item/vide
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { PipesModule } from '../_shared/pipes/pipes.module';
+import { ToolboxModule } from '../toolbox/toolbox.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     CoreModule,
-    PipesModule
+    PipesModule,
+    ToolboxModule
   ],
   providers: [
     SearchByNamePipe,
@@ -29,7 +31,8 @@ import { PipesModule } from '../_shared/pipes/pipes.module';
     VideoCourseAddNewComponent,
     VideoCourseAddNewItemComponent,
     CreationDateDirective,
-    VideoCourceOrderPipe
+    VideoCourceOrderPipe,
+    SearchByNamePipe
   ],
   exports: [
     VideoCoursesListComponentComponent,

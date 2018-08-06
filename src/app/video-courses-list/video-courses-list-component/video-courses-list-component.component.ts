@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 import { VideoCourseItem } from '../../_shared/model/video-course-item';
 import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-video-courses-list-component',
@@ -13,7 +15,14 @@ export class VideoCoursesListComponentComponent implements OnInit {
   private videoCourceIndex = 4;
   public loadMoreVisible = 'visible';
 
-  constructor(private videoCoursesService: VideoCoursesServiceService, private searchByNamePipe: SearchByNamePipe) { }
+  public breadcrumb = '';
+
+  private id: number;
+  private subscription: Subscription;
+
+  constructor(private videoCoursesService: VideoCoursesServiceService,
+              private searchByNamePipe: SearchByNamePipe,
+              private activateRoute: ActivatedRoute) { }
 
   @Input()
   set searchVideoCource(searchVideoCource: string) {
@@ -21,7 +30,15 @@ export class VideoCoursesListComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
+    this.subscription = this.activateRoute.params.subscribe(data => this.id = Number(data['id']));
+
+    this.breadcrumb = 'Courses';
+    if (typeof(this.id) !== 'undefined' && this.id !== 0 && !isNaN(this.id)) {
+      const foundObject = this.videoCoursesService.getVideoCoursesById(this.id);
+      this.videoCourses = typeof(foundObject) === 'undefined' ? [] : [ foundObject ];
+    } else {
+      this.videoCourses = this.videoCoursesService.getVideoCourses(this.videoCourceIndex);
+    }
   }
 
   loadMore() {

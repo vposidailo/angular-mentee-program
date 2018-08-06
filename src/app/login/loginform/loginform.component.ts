@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../_shared/services/login_service/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginform',
@@ -9,12 +10,16 @@ import { LoginService } from '../../_shared/services/login_service/login.service
 export class LoginformComponent implements OnInit {
   username = '';
   password = '';
-  constructor(private userService: LoginService) { }
+
+  constructor(private userService: LoginService, private router: Router) { }
 
   ngOnInit() {
   }
 
   loginClick() {
-    this.userService.login(this.username);
+    this.userService.login(this.username, this.password);
+    if (this.userService.isAuthenticated() === true) {
+      this.router.navigateByUrl('courses');
+    }
   }
 }

@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VideoCourseAddNewItemComponent } from './video-course-add-new-item.component';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../../core/core.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 
 describe('VideoCourseAddNewItemComponent', () => {
   let component: VideoCourseAddNewItemComponent;
@@ -11,7 +13,8 @@ describe('VideoCourseAddNewItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ VideoCourseAddNewItemComponent ],
-      imports: [ FormsModule, CoreModule ]
+      imports: [ FormsModule, CoreModule, RouterTestingModule ],
+      providers: [VideoCoursesServiceService]
     })
     .compileComponents();
   }));

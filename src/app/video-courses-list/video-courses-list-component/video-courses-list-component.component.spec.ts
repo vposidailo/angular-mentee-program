@@ -7,6 +7,11 @@ import { VideoCourceOrderPipe } from '../../_shared/pipes/video-cource-order.pip
 import { CreationDateDirective } from '../../_shared/derectives/creation-date.directive';
 import { DurationPipe } from '../../_shared/pipes/duration.pipe';
 import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BreadcrumbsComponent } from '../../core/breadcrumbs/breadcrumbs.component';
+import { SearchComponent } from '../../toolbox/search/search.component';
+import { VideoCourseAddNewComponent } from '../video-course-add-new/video-course-add-new.component';
+import { FormsModule } from '@angular/forms';
 
 describe('VideoCoursesListComponentComponent', () => {
   let component: VideoCoursesListComponentComponent;
@@ -14,12 +19,19 @@ describe('VideoCoursesListComponentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        FormsModule
+      ],
       declarations: [
         VideoCoursesListComponentComponent,
         VideoCoursesListItemComponentComponent,
+        VideoCourseAddNewComponent,
         VideoCourceOrderPipe,
         CreationDateDirective,
-        DurationPipe
+        DurationPipe,
+        BreadcrumbsComponent,
+        SearchComponent
       ],
       providers: [ VideoCoursesServiceService, SearchByNamePipe ]
     })

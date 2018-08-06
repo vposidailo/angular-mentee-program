@@ -5,8 +5,9 @@ import { CoreModule } from './core/core.module';
 import { ToolboxModule } from './toolbox/toolbox.module';
 import { VideoCoursesListModule } from './video-courses-list/video-courses-list.module';
 import { VideoCoursesServiceService } from './_shared/services/video_courses_service/video-courses-service.service';
-import { LoginService } from './_shared/services/login_service/login.service';
 import { LoginModule } from './login/login.module';
+import { RouterTestingModule } from '@angular/router/testing';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,7 +19,8 @@ describe('AppComponent', () => {
         CoreModule,
         VideoCoursesListModule,
         ToolboxModule,
-        LoginModule
+        LoginModule,
+        RouterTestingModule
       ],
       providers: [VideoCoursesServiceService],
     }).compileComponents();

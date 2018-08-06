@@ -11,6 +11,8 @@ import { DurationComponent } from './controls/duration/duration.component';
 import { DurationPipe } from '../_shared/pipes/duration.pipe';
 import { PipesModule } from '../_shared/pipes/pipes.module';
 import { AuthorComponent } from './controls/author/author.component';
+import { NoContentComponent } from './no_content/no-content.component';
+
 
 @NgModule({
   imports: [
@@ -29,7 +31,8 @@ import { AuthorComponent } from './controls/author/author.component';
     BreadcrumbsComponent,
     DateTimePickerComponent,
     DurationComponent,
-    AuthorComponent
+    AuthorComponent,
+    NoContentComponent
   ],
   exports: [
     HeaderComponent,

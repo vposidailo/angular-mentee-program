@@ -99,10 +99,11 @@ export class VideoCoursesServiceService {
   }
 
   public getVideoCoursesById(id: number): VideoCourseItem {
-    return this.videoCourseSource.find(item => item.id === id);
+    return this.videoCourseSource.find(element => element.id === id);
   }
 
   public createVideoCourseItem(item: VideoCourseItem): VideoCourseItem[] {
+    item.id = this.videoCourseSource.length + 1;
     this.videoCourseSource.push(item);
     return this.videoCourseSource;
   }
@@ -117,7 +118,7 @@ export class VideoCoursesServiceService {
   public updateVideoCourceItem(item: VideoCourseItem): VideoCourseItem[] {
     const updateItemIndex = this.videoCourseSource.findIndex(arrItem => arrItem.id === item.id);
 
-    if (updateItemIndex <= -1) {
+    if (updateItemIndex === -1) {
       return this.videoCourseSource;
     }
 
