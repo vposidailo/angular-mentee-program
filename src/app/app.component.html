@@ -1,29 +1,5 @@
 <app-header>
 </app-header>
 <router-outlet></router-outlet>
-<!-- <app-loginform 
-    *ngIf="!checkIfUserLogin">
-</app-loginform>
-<div 
-    class="row">
-  <app-search
-      class="col-10"
-      (searchTextOutput) = "filterVideoCource($event)"
-      *ngIf="checkIfUserLogin && !addNewItemPage" >
-  </app-search>
-  <app-video-course-add-new 
-      class="col-2"
-      *ngIf="checkIfUserLogin  && !addNewItemPage"
-      (addNewItemOutput)="newVideoCourseItemAction($event)">
-  </app-video-course-add-new>
-</div>
-<app-video-courses-list-component
-    [searchVideoCource] = "searchText"
-    *ngIf="checkIfUserLogin && !addNewItemPage">
-</app-video-courses-list-component>
-<app-video-course-add-new-item
-    (rejectAddingNewVideoCourseItemOutput) = "newVideoCourseItemAction($event)"
-    *ngIf="checkIfUserLogin && addNewItemPage">
-</app-video-course-add-new-item> -->
 <app-footer>
 </app-footer>
