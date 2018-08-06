@@ -13,6 +13,7 @@ import { ROUTES } from './_shared/routes/app.routes';
 import { AuthGuard } from './_shared/guards/auth-guard.guard';
 import { IsAuthGuard } from './_shared/guards/is-auth.guard';
 import { IsNotAuthGuard } from './_shared/guards/is-not-auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { IsNotAuthGuard } from './_shared/guards/is-not-auth.guard';
     CoreModule,
     VideoCoursesListModule,
     LoginModule,
-    RouterModule.forRoot(ROUTES, {useHash: true})
+    RouterModule.forRoot(ROUTES, {useHash: true}),
+    HttpClientModule,
   ],
   providers: [
     VideoCoursesServiceService,

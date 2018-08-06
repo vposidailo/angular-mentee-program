@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../model/user';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+const USER_SERVICE_URL = 'http://localhost:3000/users';
 
 @Injectable()
 export class LoginService {
   private isAuth = false;
   private loginedUser = <User> { };
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   public login(email: string, password: string): User {
     const userCredential = this.getUserCredential();
-    if (userCredential.Email === email
-      && userCredential.Password === password) {
+    // debugger;
+    // if (userCredential.Email === email
+    //   && userCredential.Password === password) {
       this.isAuth = true;
 
       this.loginedUser.Id = 1;
       this.loginedUser.Email = email;
       this.loginedUser.FirstName = 'Vitalii';
       this.loginedUser.LastName = 'Posidailo';
-    }
+    // }
 
     window.localStorage.setItem('loginUser', JSON.stringify(this.loginedUser));
     return this.loginedUser;
@@ -42,7 +46,8 @@ export class LoginService {
 
   }
 
-  public getUserCredential(): any {
-    return JSON.parse(window.localStorage.getItem('userCredential'));
+  public getUserCredential(): Observable<any> {
+    return this.http.get<any>(`${USER_SERVICE_URL}`);
+    // return JSON.parse(window.localStorage.getItem('userCredential'));
   }
 }

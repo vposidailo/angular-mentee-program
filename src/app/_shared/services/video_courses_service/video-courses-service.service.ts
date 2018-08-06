@@ -85,6 +85,141 @@ export class VideoCoursesServiceService {
       Duration: 311,
       Creationdate: new Date(2017, 9, 26),
       IsTopRated: false
+    },
+    {
+      id: 10,
+      Title: 'Docker for Web Developers',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Docker can bring many benefits to your development workflow and deployment process. You\'ll learn how to use Docker tools and commands, how to work with images and containers, container orchestration techniques, and much more.',
+      Duration: 341,
+      Creationdate: new Date(2018, 7, 20),
+      IsTopRated: false
+    },
+    {
+      id: 11,
+      Title: 'Building a JavaScript Development Environment',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Starting a new JavaScript project from scratch is overwhelming. This course provides a playbook outlining the key decisions you need to make. Build a robust development environment that handles bundling, linting, transpiling, testing, and much more.',
+      Duration: 319,
+      Creationdate: new Date(2016, 10, 10),
+      IsTopRated: false
+    },
+    {
+      id: 12,
+      Title: 'Understanding Machine Learning',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Need a short, clear introduction to machine learning? Watch this.',
+      Duration: 39,
+      Creationdate: new Date(2016, 2, 4),
+      IsTopRated: false
+    },
+    {
+      id: 13,
+      Title: 'Domain-Driven Design Fundamentals',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This course teaches the fundamentals of Domain-Driven Design (DDD) through a demonstration of customer interactions and a complex demo application, along with advice from Eric Evans.',
+      Duration: 256,
+      Creationdate: new Date(2014, 6, 25),
+      IsTopRated: true
+    },
+    {
+      id: 14,
+      Title: 'Building Your First API with ASP.NET Core',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Microsoft is moving towards a new direction with its developer frameworks, signified by the cross-platform, modular, and faster ASP.NET Core 1.x/2.0 and Entity Framework Core 1.x/2.0. In this course, you\'ll learn how to build an API with these.',
+      Duration: 261,
+      Creationdate: new Date(2017, 8, 11),
+      IsTopRated: true
+    },
+    {
+      id: 15,
+      Title: 'Building Mobile Apps with Ionic, Angular, and TypeScript',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This code-focused course explores the exciting new Ionic framework and shows how to build mobile apps using Angular and TypeScript.',
+      Duration: 247,
+      Creationdate: new Date(2016, 10, 13),
+      IsTopRated: true
+    },
+    {
+      id: 16,
+      Title: 'AngularJS: Get Started',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This course demonstrates how to use the essential abstractions of AngularJS, including modules, controllers, directives, and services.',
+      Duration: 178,
+      Creationdate: new Date(2014, 7, 6),
+      IsTopRated: false
+    },
+    {
+      id: 16,
+      Title: 'React.js: Getting Started',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Learn the basics of React.js, and build an in-browser, math skills kids\' game from scratch with it.',
+      Duration: 103,
+      Creationdate: new Date(2017, 4, 12),
+      IsTopRated: false
+    },
+    {
+      id: 17,
+      Title: 'Spring Security Fundamentals',
+      // tslint:disable-next-line:max-line-length
+      Description: 'A course covering the fundamentals of using Spring Security for securing Java applications built with Spring MVC.',
+      Duration: 248,
+      Creationdate: new Date(2014, 4, 3),
+      IsTopRated: false
+    },
+    {
+      id: 18,
+      Title: 'Building Applications with ASP.NET MVC 4',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This course is a comprehensive introduction to ASP.NET MVC 4, and will give you the essentials you need to start building applications with Microsoft\'s MVC framework.',
+      Duration: 443,
+      Creationdate: new Date(2012, 10, 8),
+      IsTopRated: false
+    },
+    {
+      id: 19,
+      Title: 'Understanding Machine Learning with Python',
+      // tslint:disable-next-line:max-line-length
+      Description: 'Use your data to predict future events with the help of machine learning. This course will walk you through creating a machine learning prediction solution and will introduce Python, the scikit-learn library, and the Jupyter Notebook environment.',
+      Duration: 114,
+      Creationdate: new Date(2016, 3, 17),
+      IsTopRated: false
+    },
+    {
+      id: 20,
+      Title: 'Advanced Node.js',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This course will teach you the core Node.js concepts and API modules from simple utility modules all the way to streams and clusters.',
+      Duration: 225,
+      Creationdate: new Date(2017, 2, 16),
+      IsTopRated: false
+    },
+    {
+      id: 21,
+      Title: 'ASP.NET Core Fundamentals',
+      // tslint:disable-next-line:max-line-length
+      Description: 'This course will cover the fundamentals of what you need to know to start building your first ASP.NET Core application with the MVC framework.',
+      Duration: 349,
+      Creationdate: new Date(2017, 11, 9),
+      IsTopRated: true
+    },
+    {
+      id: 22,
+      Title: 'What Every Developer Must Know About HTTPS',
+      // tslint:disable-next-line:max-line-length
+      Description: 'HTTPS is an essential component of any software running on the web. This course teaches developers how to get their apps talking securely over the web, while avoiding the common pitfalls so many sites fall victim to.',
+      Duration: 304,
+      Creationdate: new Date(2017, 4, 12),
+      IsTopRated: true
+    },
+    {
+      id: 22,
+      Title: 'Clean Architecture: Patterns, Practices, and Principles',
+      // tslint:disable-next-line:max-line-length
+      Description: 'In this course, you will learn about Clean Architecture, a set of modern patterns, practices, and principles for creating software architecture that is simple, understandable, flexible, testable, and maintainable.',
+      Duration: 141,
+      Creationdate: new Date(2017, 1, 11),
+      IsTopRated: true
     }
   ];
 

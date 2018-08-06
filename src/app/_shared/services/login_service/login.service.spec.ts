@@ -7,7 +7,7 @@ import { IsAuthGuard } from '../../guards/is-auth.guard';
 describe('LoginService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LoginService, AuthGuard, IsAuthGuard, ]
+      providers: [LoginService, AuthGuard, IsAuthGuard]
     });
   });
 
