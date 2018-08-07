@@ -6,27 +6,37 @@ let failedRequestsCount = 0;
 
 module.exports = (server) => {
 
-	router.get('/courses', (req, res, next) => {
-		// console.log('did it');
-		// if (!req.header('Authorization')) {
-		// 	res.status(401).send('Unathorized!');
-		// }
+  router.get('/courses', (req, res, next) => {
 
-		let usersDB = server.db.getState().courses;
+      let courseDB = server.db.getState().courses;
 
-		if (req.query['textFragment'] === 'error' && failedRequestsCount <= 3) {
-			failedRequestsCount++;
-			res.status('500').send('Something went wrong');
-		}
+      let courses = req.query['searchText'] ? courseDB.filter((course) => {
+          return course.Title.toUpperCase().indexOf(req.query['searchText'].toUpperCase()) >= 0;
+      }) : courseDB;
 
-		let users = req.query['textFragment'] ? usersDB.filter((user) => {
-			return user.name.toUpperCase().indexOf(req.query['textFragment'].toUpperCase()) >= 0;
-		}) : usersDB;
+      courses = courses.slice(0, req.query['page'] * req.query['count']);
+      
+      const responseObject = {
+        courses: courses,
+        canLoadMore: courseDB.length > req.query['page'] * req.query['count']
+      };
 
-		users = users.slice(0, req.query['count']);
+      res.json(responseObject);
+  });
 
-		res.json(users);
-	});
+  router.delete('/courses', (req, res, next) => {
 
-	return router;
+      let courseDB = server.db.getState().courses;
+
+      const removedItemIndex = courseDB.findIndex(arrItem => arrItem.id === req.query['id']);
+      courseDB.splice(removedItemIndex, 1);
+
+      const responseObject = {
+        courses: courseDB,
+      };
+
+      res.json(responseObject);
+  });
+
+    return router;
 };

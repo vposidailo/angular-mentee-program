@@ -6,27 +6,39 @@ let failedRequestsCount = 0;
 
 module.exports = (server) => {
 
-	router.get('/users', (req, res, next) => {
-debugger;
-		// if (!req.header('Authorization')) {
-		// 	res.status(401).send('Unathorized!');
-		// }
+    router.get('/user', (req, res, next) => {
+        const userCredential = {
+              Email: 'vposidaylo@gmail.com',
+              Password: '123'
+        };
 
-		let usersDB = server.db.getState().users;
+        if (userCredential.Email !== req.query['email']
+            || userCredential.Password !== req.query['password']) {
+                res.status('401').send('Unathorize');
+            }
 
-		if (req.query['textFragment'] === 'error' && failedRequestsCount <= 3) {
-			failedRequestsCount++;
-			res.status('500').send('Something went wrong');
-		}
+        let usersDB = server.db.getState().users;
+        let user = req.query['email'] ? usersDB.filter((user) => {
+            return user.Email.toUpperCase().indexOf(req.query['email'].toUpperCase()) >= 0;
+        }) : userDB;
+        
+        res.json(user);
 
-		let users = req.query['textFragment'] ? usersDB.filter((user) => {
-			return user.name.toUpperCase().indexOf(req.query['textFragment'].toUpperCase()) >= 0;
-		}) : usersDB;
+        // let usersDB = server.db.getState().users;
 
-		users = users.slice(0, req.query['count']);
+        // if (req.query['textFragment'] === 'error' && failedRequestsCount <= 3) {
+        //     failedRequestsCount++;
+        //     res.status('500').send('Something went wrong');
+        // }
 
-		res.json(users);
-	});
+        // let users = req.query['textFragment'] ? usersDB.filter((user) => {
+        //     return user.name.toUpperCase().indexOf(req.query['textFragment'].toUpperCase()) >= 0;
+        // }) : usersDB;
 
-	return router;
+        // users = users.slice(0, req.query['count']);
+
+        // res.json(users);
+    });
+
+    return router;
 };

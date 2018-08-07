@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../model/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const USER_SERVICE_URL = 'http://localhost:3000/users';
+const USER_SERVICE_URL = 'http://localhost:3004/user';
 
 @Injectable()
 export class LoginService {
@@ -12,18 +12,17 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   public login(email: string, password: string): User {
-    const userCredential = this.getUserCredential();
-    // debugger;
-    // if (userCredential.Email === email
-    //   && userCredential.Password === password) {
-      this.isAuth = true;
+    // tslint:disable-next-line:max-line-length
+    // this.userAuthentification(email, password).subscribe((res: User) => {
+    //   this.loginedUser = res;
+    //   this.isAuth = true;
+    //   window.localStorage.setItem('loginUser', JSON.stringify(this.loginedUser));
+    //   return this.loginedUser;
+    // },
+    //   (error: HttpErrorResponse) => console.log(error)
+    // );
 
-      this.loginedUser.Id = 1;
-      this.loginedUser.Email = email;
-      this.loginedUser.FirstName = 'Vitalii';
-      this.loginedUser.LastName = 'Posidailo';
-    // }
-
+    this.isAuth = true;
     window.localStorage.setItem('loginUser', JSON.stringify(this.loginedUser));
     return this.loginedUser;
   }
@@ -49,5 +48,9 @@ export class LoginService {
   public getUserCredential(): Observable<any> {
     return this.http.get<any>(`${USER_SERVICE_URL}`);
     // return JSON.parse(window.localStorage.getItem('userCredential'));
+  }
+
+  private userAuthentification(email: string, password: string): Observable<User> {
+    return this.http.get<User>(`${USER_SERVICE_URL}`, {params: {email, password}});
   }
 }
