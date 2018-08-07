@@ -33,11 +33,11 @@ export class VideoCoursesServiceService {
     return this.videoCourseSource;
   }
 
-  public removeVideoCourseItem(item: VideoCourseItem): Observable<VideoCourseItem[]> {
+  public removeVideoCourseItem(item: VideoCourseItem): Observable<number> {
     const params: HttpParams = new HttpParams()
                                 .set('id', item.id.toString());
 
-    return this.http.delete<VideoCourseItem[]>(`${VIDEO_COURSE_SERVICE_URL}`, {params} );
+    return this.http.delete<number>(`${VIDEO_COURSE_SERVICE_URL}`, {params} );
     // const removedItemIndex = this.videoCourseSource.findIndex(arrItem => arrItem.id === item.id);
     // this.videoCourseSource.splice(removedItemIndex, 1);
 

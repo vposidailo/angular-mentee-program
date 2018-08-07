@@ -68,8 +68,10 @@ export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
   deleteVideoCourseItem(event): string {
     const result = window.confirm('Do you really want to delete this course?');
     if (result) {
-      this.videoCourseDeleteSubscriber = this.videoCoursesService.removeVideoCourseItem(event).subscribe((res: VideoCourseItem[]) => {
-        this.videoCourses = res['courses'];
+      this.videoCourseDeleteSubscriber = this.videoCoursesService.removeVideoCourseItem(event).subscribe((res: number) => {
+        if (res['courses'] !== -1) {
+          this.init();
+        }
       });
 
       return 'Delete: item parent call ' + event;

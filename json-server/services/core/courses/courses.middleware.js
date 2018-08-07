@@ -5,10 +5,9 @@ const url = require('url');
 let failedRequestsCount = 0;
 
 module.exports = (server) => {
+  let courseDB = server.db.getState().courses;
 
   router.get('/courses', (req, res, next) => {
-
-      let courseDB = server.db.getState().courses;
 
       let courses = req.query['searchText'] ? courseDB.filter((course) => {
           return course.Title.toUpperCase().indexOf(req.query['searchText'].toUpperCase()) >= 0;
@@ -26,13 +25,11 @@ module.exports = (server) => {
 
   router.delete('/courses', (req, res, next) => {
 
-      let courseDB = server.db.getState().courses;
-
-      const removedItemIndex = courseDB.findIndex(arrItem => arrItem.id === req.query['id']);
+      const removedItemIndex = courseDB.findIndex(arrItem => arrItem.id.toString() === req.query['id']);
       courseDB.splice(removedItemIndex, 1);
 
       const responseObject = {
-        courses: courseDB,
+        removedItemIndex: removedItemIndex
       };
 
       res.json(responseObject);
