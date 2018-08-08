@@ -16,7 +16,7 @@ export class VideoCoursesServiceService {
                                   .set('page', page.toString())
                                   .set('count', count.toString())
                                   .set('searchText', searchText);
-    return this.http.get<VideoCourseItem[]>(`${VIDEO_COURSE_SERVICE_URL}`, {params} );
+    return this.http.get<VideoCourseItem[]>(`${VIDEO_COURSE_SERVICE_URL}`, { params } );
   }
 
   public getAllVideoCourses() {
@@ -27,10 +27,9 @@ export class VideoCoursesServiceService {
     return this.videoCourseSource.find(element => element.id === id);
   }
 
-  public createVideoCourseItem(item: VideoCourseItem): VideoCourseItem[] {
-    item.id = this.videoCourseSource.length + 1;
-    this.videoCourseSource.push(item);
-    return this.videoCourseSource;
+  public createVideoCourseItem(item: VideoCourseItem): Observable<VideoCourseItem[]> {
+    const params = this.convertVideoCourseItemToHttpParams(item);
+    return this.http.post<VideoCourseItem[]>(`${VIDEO_COURSE_SERVICE_URL}`, null, { params });
   }
 
   public removeVideoCourseItem(item: VideoCourseItem): Observable<number> {
@@ -38,24 +37,25 @@ export class VideoCoursesServiceService {
                                 .set('id', item.id.toString());
 
     return this.http.delete<number>(`${VIDEO_COURSE_SERVICE_URL}`, {params} );
-    // const removedItemIndex = this.videoCourseSource.findIndex(arrItem => arrItem.id === item.id);
-    // this.videoCourseSource.splice(removedItemIndex, 1);
-
-    // return this.videoCourseSource;
   }
 
-  public updateVideoCourceItem(item: VideoCourseItem): VideoCourseItem[] {
-    const updateItemIndex = this.videoCourseSource.findIndex(arrItem => arrItem.id === item.id);
+  public updateVideoCourceItem(item: VideoCourseItem): Observable<VideoCourseItem[]> {
 
-    if (updateItemIndex === -1) {
-      return this.videoCourseSource;
-    }
-
-    this.videoCourseSource[updateItemIndex] = item;
-    return this.videoCourseSource;
+    const params = this.convertVideoCourseItemToHttpParams(item);
+    return this.http.put<VideoCourseItem[]>(`${VIDEO_COURSE_SERVICE_URL}`, { params });
   }
 
   public checkIfSourceHaveMoreElements(length: number): boolean {
     return length <= this.videoCourseSource.length;
+  }
+
+  private convertVideoCourseItemToHttpParams(item: VideoCourseItem): HttpParams {
+    return new HttpParams()
+                    .set('id', item.id.toString())
+                    .set('Title', item.Title)
+                    .set('Description', item.Description)
+                    .set('Duration', item.Duration.toString())
+                    .set('Creationdate', item.Creationdate.toString())
+                    .set('IsTopRated', item.IsTopRated.toString());
   }
 }

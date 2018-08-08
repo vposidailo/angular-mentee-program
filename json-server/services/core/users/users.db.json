@@ -1,10 +1,13 @@
 {
   "users": [
     {
-      "Id": "1",
-      "Email": "vposidaylo@gmail.com",
-      "FirstName": "Janie Mckinney",
-      "LastName": "Posidailo"
+      "password": "123",
+      "userInfo": {
+        "Id": "1",
+        "Email": "vposidaylo@gmail.com",
+        "FirstName": "Janie Mckinney",
+        "LastName": "Posidailo"
+      }
     }
   ]
 }

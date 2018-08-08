@@ -18,7 +18,7 @@ export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
   private videoCourceDefaultCount = 5;
   private videoCourcePage = 1;
   public loadMoreVisible = 'visible';
-  searchText = '';
+  private searchText = '';
 
   public breadcrumb = '';
 
@@ -50,9 +50,11 @@ export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
                                       );
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.videoCourseSubscriber.unsubscribe();
-    this.videoCourseDeleteSubscriber.unsubscribe();
+    if (this.videoCourseDeleteSubscriber) {
+      this.videoCourseDeleteSubscriber.unsubscribe();
+    }
   }
 
   filterVideoCource (searchText: string) {

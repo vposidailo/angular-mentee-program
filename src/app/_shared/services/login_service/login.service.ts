@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../model/user';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const USER_SERVICE_URL = 'http://localhost:3004/user';
@@ -11,20 +11,17 @@ export class LoginService {
   private loginedUser = <User> { };
   constructor(private http: HttpClient) { }
 
-  public login(email: string, password: string): User {
-    // tslint:disable-next-line:max-line-length
-    // this.userAuthentification(email, password).subscribe((res: User) => {
-    //   this.loginedUser = res;
-    //   this.isAuth = true;
-    //   window.localStorage.setItem('loginUser', JSON.stringify(this.loginedUser));
-    //   return this.loginedUser;
-    // },
-    //   (error: HttpErrorResponse) => console.log(error)
-    // );
+  public login(email: string, password: string): Observable<User> {
+    const params = new HttpParams()
+                    .set('email', email)
+                    .set('password', password);
 
+    return this.http.get<User>(`${USER_SERVICE_URL}`, { params });
+  }
+
+  public setAuthenticatedUser(user: User) {
     this.isAuth = true;
-    window.localStorage.setItem('loginUser', JSON.stringify(this.loginedUser));
-    return this.loginedUser;
+    window.localStorage.setItem('loginUser', JSON.stringify(user));
   }
 
   public logout() {
@@ -42,15 +39,5 @@ export class LoginService {
     } else {
       return {Id: 0, Email: '', FirstName: '', LastName: ''};
     }
-
-  }
-
-  public getUserCredential(): Observable<any> {
-    return this.http.get<any>(`${USER_SERVICE_URL}`);
-    // return JSON.parse(window.localStorage.getItem('userCredential'));
-  }
-
-  private userAuthentification(email: string, password: string): Observable<User> {
-    return this.http.get<User>(`${USER_SERVICE_URL}`, {params: {email, password}});
   }
 }

@@ -35,5 +35,48 @@ module.exports = (server) => {
       res.json(responseObject);
   });
 
+  router.put('/courses', (req, res, next) => {
+
+    let itemToUpdate = {
+      Title: req.query['Title'],
+      Description: req.query['Description'],
+      Duration: req.query['Duration'],
+      Creationdate: req.query['Creationdate'],
+      IsTopRated: req.query['IsTopRated'],
+    }
+
+    const updateItemIndex = courseDB.findIndex(arrItem => arrItem.id === item.id);
+
+    if (updateItemIndex !== -1) {
+      courseDB[updateItemIndex] = itemToUpdate;
+    }
+
+    const responseObject = {
+      removedItemIndex: courseDB
+    };
+
+    res.json(responseObject);
+  });
+
+  router.post('/courses', (req, res, next) => {
+
+    let itemToInsert = {
+      id: courseDB.length + 1,
+      Title: req.query['Title'],
+      Description: req.query['Description'],
+      Duration: req.query['Duration'],
+      Creationdate: req.query['Creationdate'],
+      IsTopRated: req.query['IsTopRated'],
+    }
+
+    courseDB.push(itemToInsert);
+
+    const responseObject = {
+      removedItemIndex: courseDB
+    };
+
+    res.json(responseObject);
+  });
+
     return router;
 };
