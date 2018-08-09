@@ -7,7 +7,6 @@ const USER_SERVICE_URL = 'http://localhost:3004/user';
 
 @Injectable()
 export class LoginService {
-  private isAuth = false;
   private loginedUser = <User> { };
   constructor(private http: HttpClient) { }
 
@@ -20,24 +19,22 @@ export class LoginService {
   }
 
   public setAuthenticatedUser(user: User) {
-    this.isAuth = true;
+    window.localStorage.setItem('IsAuthenticated', JSON.stringify(true));
     window.localStorage.setItem('loginUser', JSON.stringify(user));
   }
 
   public logout() {
-    this.isAuth = false;
+    window.localStorage.removeItem('IsAuthenticated');
     window.localStorage.removeItem('loginUser');
   }
 
   public isAuthenticated(): boolean {
-    return this.isAuth;
+    return JSON.parse(window.localStorage.getItem('IsAuthenticated'));
   }
 
   public getUserInfo(): User {
-    if (this.isAuth === true) {
+    if (this.isAuthenticated()) {
       return JSON.parse(window.localStorage.getItem('loginUser'));
-    } else {
-      return {Id: 0, Email: '', FirstName: '', LastName: ''};
     }
   }
 }

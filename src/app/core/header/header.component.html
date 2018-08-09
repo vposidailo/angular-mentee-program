@@ -10,6 +10,7 @@
     Video-Courses.com
   </span>
   <app-login
-      [user] = "userLogin">
+      [user] = "userLogin" 
+      *ngIf="checkIfUserLogin">
   </app-login>
 </div>

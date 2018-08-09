@@ -17,10 +17,6 @@ export class LoginComponent implements OnInit {
     this.user =  this.userService.getUserInfo();
   }
 
-  get checkIfUserLogin(): boolean {
-    return this.userService.isAuthenticated();
-  }
-
   logoff() {
     this.userService.logout();
     this.router.navigateByUrl('login');

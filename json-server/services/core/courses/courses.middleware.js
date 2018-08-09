@@ -23,6 +23,19 @@ module.exports = (server) => {
       res.json(responseObject);
   });
 
+  router.get('/course/:id', (req, res, next) => {
+
+    let course = req.params.id ? courseDB.find((course) => {
+      return course.id.toString() === req.params.id;
+    }) : { };
+
+    const responseObject = {
+      course: course
+    };
+
+    res.json(responseObject);
+  });
+
   router.delete('/courses', (req, res, next) => {
 
       const removedItemIndex = courseDB.findIndex(arrItem => arrItem.id.toString() === req.query['id']);
@@ -37,22 +50,14 @@ module.exports = (server) => {
 
   router.put('/courses', (req, res, next) => {
 
-    let itemToUpdate = {
-      Title: req.query['Title'],
-      Description: req.query['Description'],
-      Duration: req.query['Duration'],
-      Creationdate: req.query['Creationdate'],
-      IsTopRated: req.query['IsTopRated'],
-    }
-
-    const updateItemIndex = courseDB.findIndex(arrItem => arrItem.id === item.id);
+    const updateItemIndex = courseDB.findIndex(arrItem => arrItem.id === req.body.id);
 
     if (updateItemIndex !== -1) {
-      courseDB[updateItemIndex] = itemToUpdate;
+      courseDB[updateItemIndex] = req.body;
     }
 
     const responseObject = {
-      removedItemIndex: courseDB
+      courses: courseDB
     };
 
     res.json(responseObject);
@@ -60,19 +65,10 @@ module.exports = (server) => {
 
   router.post('/courses', (req, res, next) => {
 
-    let itemToInsert = {
-      id: courseDB.length + 1,
-      Title: req.query['Title'],
-      Description: req.query['Description'],
-      Duration: req.query['Duration'],
-      Creationdate: req.query['Creationdate'],
-      IsTopRated: req.query['IsTopRated'],
-    }
-
-    courseDB.push(itemToInsert);
+    courseDB.push(req.body);
 
     const responseObject = {
-      removedItemIndex: courseDB
+      courses: courseDB
     };
 
     res.json(responseObject);

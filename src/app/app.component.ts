@@ -12,17 +12,11 @@ export class AppComponent {
   addNewItemPage = false;
 
   constructor(private userService: LoginService) {
-    // const userCredential = {
-    //   Email: 'vposidaylo@gmail.com',
-    //   Password: '123'
-    // };
-
-    // window.localStorage.setItem('userCredential', JSON.stringify(userCredential));
   }
 
-  get checkIfUserLogin(): boolean {
-    return this.userService.isAuthenticated();
-  }
+  // get checkIfUserLogin(): boolean {
+  //   return this.userService.isAuthenticated();
+  // }
 
   newVideoCourseItemAction(event) {
     this.addNewItemPage = event;

@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
   public subscription: Subscription;
   private videoCourceCreatNewItemUpdateSubscription: Subscription;
+  private videoCourceGetItemSubscription: Subscription;
   private videoCourceId = 0;
   public videoCourseTitle = '';
   public videoCourseDescription = '';
@@ -27,13 +28,17 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(data => this.videoCourceId = Number(data['id']));
     this.breadcrumb = 'Course/New Video Course Item';
-
     if (!isNaN(this.videoCourceId) && this.videoCourceId !== 0) {
-      const currentVideoCourse = this.videoCourceService.getVideoCoursesById(this.videoCourceId);
-      this.videoCourseTitle = currentVideoCourse.Title;
-      this.videoCourseDescription = currentVideoCourse.Description;
-      this.videoCourseReleaseDate = currentVideoCourse.Creationdate.toLocaleDateString('en-GB');
-      this.videoCourseDuration = currentVideoCourse.Duration;
+      this.videoCourceGetItemSubscription = this.videoCourceService
+                                                .getVideoCoursesById(this.videoCourceId)
+                                                .subscribe((res: VideoCourseItem) => {
+                                                    const currentVideoCourse = res['course'];
+                                                    this.videoCourseTitle = currentVideoCourse.Title;
+                                                    this.videoCourseDescription = currentVideoCourse.Description;
+                                                    // tslint:disable-next-line:max-line-length
+                                                    this.videoCourseReleaseDate = new Date(currentVideoCourse.Creationdate).toLocaleDateString('en-GB');
+                                                    this.videoCourseDuration = currentVideoCourse.Duration;
+                                                });
 
       this.breadcrumb = 'Course/' + this.videoCourseTitle;
     }
@@ -43,6 +48,10 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
     if (this.videoCourceCreatNewItemUpdateSubscription) {
       this.videoCourceCreatNewItemUpdateSubscription.unsubscribe();
+    }
+
+    if (this.videoCourceGetItemSubscription) {
+      this.videoCourceGetItemSubscription.unsubscribe();
     }
   }
 
