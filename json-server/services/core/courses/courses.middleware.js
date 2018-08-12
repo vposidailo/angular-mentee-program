@@ -64,7 +64,8 @@ module.exports = (server) => {
   });
 
   router.post('/courses', (req, res, next) => {
-
+    
+    req.body.id = courseDB.length + 1;
     courseDB.push(req.body);
 
     const responseObject = {

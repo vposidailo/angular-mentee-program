@@ -26,7 +26,7 @@ export class LoginformComponent implements OnInit, OnDestroy {
   loginClick() {
     this.loginUserSubscriber = this.userService.login(this.username, this.password).subscribe((res: any) => {
       if (res['isAuthenticated'] === true) {
-        this.userService.setAuthenticatedUser(res['userInfo']);
+        this.userService.setAuthenticatedUser(res['userToken']);
         this.router.navigateByUrl('courses');
       }
     });

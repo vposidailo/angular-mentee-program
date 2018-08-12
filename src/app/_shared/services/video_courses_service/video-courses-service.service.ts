@@ -32,7 +32,6 @@ export class VideoCoursesServiceService {
   }
 
   public createVideoCourseItem(item: VideoCourseItem): Observable<VideoCourseItem[]> {
-    const params = this.convertVideoCourseItemToHttpParams(item);
     return this.http.post<VideoCourseItem[]>(`${SERVER_URL}/${VIDEO_COURCES}`, item);
   }
 
@@ -44,21 +43,6 @@ export class VideoCoursesServiceService {
   }
 
   public updateVideoCourceItem(item: VideoCourseItem): Observable<VideoCourseItem[]> {
-    const params = this.convertVideoCourseItemToHttpParams(item);
     return this.http.put<VideoCourseItem[]>(`${SERVER_URL}/${VIDEO_COURCES}`, item);
-  }
-
-  public checkIfSourceHaveMoreElements(length: number): boolean {
-    return length <= this.videoCourseSource.length;
-  }
-
-  private convertVideoCourseItemToHttpParams(item: VideoCourseItem): HttpParams {
-    return new HttpParams()
-                    .set('id', item.id.toString())
-                    .set('Title', item.Title)
-                    .set('Description', item.Description)
-                    .set('Duration', item.Duration.toString())
-                    .set('Creationdate', item.Creationdate.toString())
-                    .set('IsTopRated', item.IsTopRated.toString());
   }
 }

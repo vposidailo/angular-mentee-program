@@ -3,38 +3,43 @@ import { User } from '../../model/user';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const USER_SERVICE_URL = 'http://localhost:3004/user';
+const USER_SERVICE_URL = 'http://localhost:3004';
+const USER_INFO = 'userInfo';
+const LOGIN_USER = 'loginUser';
 
 @Injectable()
 export class LoginService {
-  private loginedUser = <User> { };
   constructor(private http: HttpClient) { }
 
-  public login(email: string, password: string): Observable<User> {
+  public login(email: string, password: string): Observable<any> {
     const params = new HttpParams()
                     .set('email', email)
                     .set('password', password);
 
-    return this.http.get<User>(`${USER_SERVICE_URL}`, { params });
+    return this.http.post<any>(`${USER_SERVICE_URL}/${LOGIN_USER}`, params);
   }
 
-  public setAuthenticatedUser(user: User) {
+  public setAuthenticatedUser(userToken: string) {
     window.localStorage.setItem('IsAuthenticated', JSON.stringify(true));
-    window.localStorage.setItem('loginUser', JSON.stringify(user));
+    window.localStorage.setItem('userToken', JSON.stringify(userToken));
   }
 
   public logout() {
     window.localStorage.removeItem('IsAuthenticated');
-    window.localStorage.removeItem('loginUser');
+    window.localStorage.removeItem('userToken');
   }
 
   public isAuthenticated(): boolean {
     return JSON.parse(window.localStorage.getItem('IsAuthenticated'));
   }
 
-  public getUserInfo(): User {
+  public getUserInfo(): Observable<User> {
     if (this.isAuthenticated()) {
-      return JSON.parse(window.localStorage.getItem('loginUser'));
+
+      const params = new HttpParams()
+                        .set('userToken', JSON.parse(window.localStorage.getItem('userToken')));
+
+      return this.http.get<User>(`${USER_SERVICE_URL}/${USER_INFO}`, { params });
     }
   }
 }
