@@ -7,6 +7,7 @@ import { VideoCoursesListModule } from './video-courses-list/video-courses-list.
 import { VideoCoursesServiceService } from './_shared/services/video_courses_service/video-courses-service.service';
 import { LoginModule } from './login/login.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -20,7 +21,8 @@ describe('AppComponent', () => {
         VideoCoursesListModule,
         ToolboxModule,
         LoginModule,
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientModule
       ],
       providers: [VideoCoursesServiceService],
     }).compileComponents();

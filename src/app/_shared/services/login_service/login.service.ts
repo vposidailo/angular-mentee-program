@@ -33,6 +33,10 @@ export class LoginService {
     return JSON.parse(window.localStorage.getItem('IsAuthenticated'));
   }
 
+  public getUserToken(): string {
+    return JSON.parse(window.localStorage.getItem('userToken'));
+  }
+
   public getUserInfo(): Observable<User> {
     if (this.isAuthenticated()) {
 

@@ -11,7 +11,8 @@ import { ROUTES } from './_shared/routes/app.routes';
 import { AuthGuard } from './_shared/guards/auth-guard.guard';
 import { IsAuthGuard } from './_shared/guards/is-auth.guard';
 import { IsNotAuthGuard } from './_shared/guards/is-not-auth.guard';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './_shared/interceptors/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     VideoCoursesServiceService,
     AuthGuard,
     IsAuthGuard,
-    IsNotAuthGuard
+    IsNotAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [
     AppComponent

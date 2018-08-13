@@ -76,7 +76,7 @@ export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
         }
       });
 
-      return 'Delete: item parent call ' + event;
+      return 'Delete: item parent call ' + event.id;
     }
   }
 }
