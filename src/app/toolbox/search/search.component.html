@@ -4,11 +4,6 @@
       class="col-4"
       name="SearchTextBox"
       placeholder="Text to search"
-      [(ngModel)] = "searchText">
-  <button 
-      class="col-1"
-      name="SearchButton"
-      (click)="searchVideoCource()">
-    Search
-  </button>
+      (ngModelChange)="searchVideoCource($event)"
+      [(ngModel)]="searchText">
 </div>

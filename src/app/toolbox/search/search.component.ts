@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SearchService } from '../../_shared/services/search_service/search.service';
 
 @Component({
   selector: 'app-search',
@@ -7,17 +9,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  public searchText: string;
-  @Output() public searchTextOutput: EventEmitter<string> = new EventEmitter<string>();
-
-  constructor() {
-    this.searchText = '';
+  private searchText = '';
+  constructor(private searchService: SearchService) {
   }
 
   ngOnInit() {
   }
 
-  searchVideoCource() {
-    this.searchTextOutput.emit(this.searchText);
+  searchVideoCource(event) {
+    this.searchService.changeSearchFilter(event);
   }
 }
