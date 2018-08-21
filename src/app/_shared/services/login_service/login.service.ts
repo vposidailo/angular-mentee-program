@@ -33,6 +33,15 @@ export class LoginService {
     return JSON.parse(window.localStorage.getItem('IsAuthenticated'));
   }
 
+  public isAuthenticatedObservable(): Observable<boolean> {
+    return Observable.create((observer) => {
+
+      observer.next(JSON.parse(window.localStorage.getItem('IsAuthenticated')));
+      observer.complete();
+
+    });
+  }
+
   public getUserToken(): string {
     return JSON.parse(window.localStorage.getItem('userToken'));
   }
