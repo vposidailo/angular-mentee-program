@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../../model/user';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
-const USER_SERVICE_URL = 'http://localhost:3004';
 const USER_INFO = 'userInfo';
 const LOGIN_USER = 'loginUser';
 
@@ -16,7 +16,7 @@ export class LoginService {
                     .set('email', email)
                     .set('password', password);
 
-    return this.http.post<any>(`${USER_SERVICE_URL}/${LOGIN_USER}`, params);
+    return this.http.post<any>(`${environment.SERVER_URL}/${LOGIN_USER}`, params);
   }
 
   public setAuthenticatedUser(userToken: string) {
@@ -43,7 +43,7 @@ export class LoginService {
       const params = new HttpParams()
                         .set('userToken', JSON.parse(window.localStorage.getItem('userToken')));
 
-      return this.http.get<User>(`${USER_SERVICE_URL}/${USER_INFO}`, { params });
+      return this.http.get<User>(`${environment.SERVER_URL}/${USER_INFO}`, { params });
     }
   }
 }
