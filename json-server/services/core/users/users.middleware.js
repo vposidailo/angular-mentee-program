@@ -8,21 +8,22 @@ module.exports = (server) => {
     let usersDB = server.db.getState().users;
 
     router.post('/loginUser', (req, res, next) => {
-        
-        userCredential = usersDB.find((user) => {
-            return user.userInfo.Email.toUpperCase().indexOf(req.body.email.toUpperCase()) >= 0;
-        });
+        setTimeout(()=>{
+            userCredential = usersDB.find((user) => {
+                return user.userInfo.Email.toUpperCase().indexOf(req.body.email.toUpperCase()) >= 0;
+            });
 
-        if (userCredential.password !== req.body.password) {
-            res.status('401').send('Incorrect user name or password!');
-        }
+            if (userCredential.password !== req.body.password) {
+                res.status('401').send('Incorrect user name or password!');
+            }
 
-        const responseObject = {
-            isAuthenticated: true,
-            userToken: userCredential.userToken
-        };
+            const responseObject = {
+                isAuthenticated: true,
+                userToken: userCredential.userToken
+            };
 
-        res.json(responseObject);
+            res.json(responseObject);
+        }, 5000);
     });
 
     router.get('/userInfo', (req, res, next) => {
@@ -30,11 +31,6 @@ module.exports = (server) => {
         userCredential = usersDB.find((user) => {
             return user.userToken.toUpperCase().indexOf(req.query['userToken'].toUpperCase()) >= 0;
         });
-
-        // if (userCredential.userInfo.Email !== req.query['email']
-        //    || userCredential.password !== req.query['password']) {
-        //         res.status('401').send('Unathorize');
-        // }
 
         const responseObject = {
             userInfo: userCredential.userInfo,
