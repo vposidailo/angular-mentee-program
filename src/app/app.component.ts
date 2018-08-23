@@ -13,14 +13,13 @@ export class AppComponent implements OnInit {
 
   title = 'app';
   addNewItemPage = false;
-  private loaderSubscriber: Subscription;
   activateLoader = false;
 
   constructor(private userService: LoginService, private loaderService: LoaderService) {
   }
 
   ngOnInit() {
-    this.loaderSubscriber = this.loaderService.loaderObservable.subscribe((val: boolean) => {
+    this.loaderService.loaderObservable.subscribe((val: boolean) => {
       this.activateLoader = val;
     });
   }
