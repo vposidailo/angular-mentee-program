@@ -1,4 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../../_shared/services/search_service/search.service';
+import { filter, debounceTime } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -7,17 +10,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  public searchText: string;
-  @Output() public searchTextOutput: EventEmitter<string> = new EventEmitter<string>();
-
-  constructor() {
-    this.searchText = '';
+  private searchText = '';
+  private searchInputSubject = new BehaviorSubject('');
+  private searchVideoObservable = this.searchInputSubject.asObservable().pipe(
+                                                        debounceTime(1000),
+                                                        filter((val: string) => val.length / 3 >= 1 || val.length === 0))
+                                                        .subscribe((val: string) => {
+                                                          this.searchService.changeSearchFilter(val);
+                                                        });
+  constructor(private searchService: SearchService) {
   }
 
   ngOnInit() {
   }
 
-  searchVideoCource() {
-    this.searchTextOutput.emit(this.searchText);
+  searchVideoCource(event) {
+    this.searchInputSubject.next(event);
   }
 }

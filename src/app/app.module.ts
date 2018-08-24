@@ -13,6 +13,7 @@ import { IsAuthGuard } from './_shared/guards/is-auth.guard';
 import { IsNotAuthGuard } from './_shared/guards/is-not-auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './_shared/interceptors/token-interceptor';
+import { LoaderInterceptor } from './_shared/interceptors/loader-Interceptor';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,11 @@ import { TokenInterceptor } from './_shared/interceptors/token-interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
       multi: true
     }
   ],

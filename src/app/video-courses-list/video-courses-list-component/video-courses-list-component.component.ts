@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 import { VideoCourseItem } from '../../_shared/model/video-course-item';
 import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SearchService } from '../../_shared/services/search_service/search.service';
+import { filter, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-video-courses-list-component',
@@ -14,6 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
   private videoCourseSubscriber: Subscription;
   private videoCourseDeleteSubscriber: Subscription;
+  private videoCourseSearchServiceSubscriber: Subscription;
   public videoCourses: VideoCourseItem[] = [];
   private videoCourceDefaultCount = 5;
   private videoCourcePage = 1;
@@ -26,7 +28,8 @@ export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private videoCoursesService: VideoCoursesServiceService,
-              private searchByNamePipe: SearchByNamePipe) { }
+              private searchByNamePipe: SearchByNamePipe,
+              private searchService: SearchService) { }
 
   @Input()
   set searchVideoCource(searchVideoCource: string) {
@@ -35,6 +38,11 @@ export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.breadcrumb = 'Courses';
+    this.videoCourseSearchServiceSubscriber = this.searchService.searchFilterMessage
+                                                  .subscribe((searchText: string) => {
+                                                                                        this.searchText = searchText;
+                                                                                        this.init();
+                                                                                      });
     this.init();
   }
 
@@ -55,11 +63,6 @@ export class VideoCoursesListComponentComponent implements OnInit, OnDestroy {
     if (this.videoCourseDeleteSubscriber) {
       this.videoCourseDeleteSubscriber.unsubscribe();
     }
-  }
-
-  filterVideoCource (searchText: string) {
-    this.searchText = searchText;
-    this.init();
   }
 
   loadMore() {

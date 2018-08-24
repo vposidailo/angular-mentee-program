@@ -1,5 +1,10 @@
 <app-header>
 </app-header>
-<router-outlet></router-outlet>
+<div *ngIf="activateLoader else routerTemplate">
+    <div id="loader"></div>
+</div>
+<ng-template #routerTemplate>
+  <router-outlet></router-outlet>
+</ng-template>
 <app-footer>
 </app-footer>
