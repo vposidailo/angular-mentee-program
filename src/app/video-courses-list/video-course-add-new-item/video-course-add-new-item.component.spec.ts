@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../../core/core.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('VideoCourseAddNewItemComponent', () => {
   let component: VideoCourseAddNewItemComponent;
@@ -13,7 +14,7 @@ describe('VideoCourseAddNewItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ VideoCourseAddNewItemComponent ],
-      imports: [ FormsModule, CoreModule, RouterTestingModule ],
+      imports: [ FormsModule, CoreModule, RouterTestingModule, HttpClientModule],
       providers: [VideoCoursesServiceService]
     })
     .compileComponents();

@@ -7,21 +7,18 @@ import { LoginformComponent } from '../../login/loginform/loginform.component';
 import { AuthGuard } from '../guards/auth-guard.guard';
 import { IsAuthGuard } from '../guards/is-auth.guard';
 import { IsNotAuthGuard } from '../guards/is-not-auth.guard';
-import { VideoCourseAddNewComponent } from '../../video-courses-list/video-course-add-new/video-course-add-new.component';
 
 export const ROUTES: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full'},
-
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     {
         path: 'login',
         component: LoginformComponent,
         canActivate: [ IsNotAuthGuard ],
         canDeactivate: [ AuthGuard ]
     },
-
     {
         path: 'courses',
-        component: VideoCoursesListComponentComponent,
+        component: VideoCoursesListComponentComponent, pathMatch: 'full',
         canActivate: [ IsAuthGuard ]
     },
     {

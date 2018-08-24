@@ -1,48 +1,49 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../model/user';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
+const USER_INFO = 'userInfo';
+const LOGIN_USER = 'loginUser';
 
 @Injectable()
 export class LoginService {
-  private isAuth = false;
-  private loginedUser = <User> { };
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  public login(email: string, password: string): User {
-    const userCredential = this.getUserCredential();
-    if (userCredential.Email === email
-      && userCredential.Password === password) {
-      this.isAuth = true;
+  public login(email: string, password: string): Observable<any> {
+    const params = new HttpParams()
+                    .set('email', email)
+                    .set('password', password);
 
-      this.loginedUser.Id = 1;
-      this.loginedUser.Email = email;
-      this.loginedUser.FirstName = 'Vitalii';
-      this.loginedUser.LastName = 'Posidailo';
-    }
+    return this.http.post<any>(`${environment.SERVER_URL}/${LOGIN_USER}`, params);
+  }
 
-    window.localStorage.setItem('loginUser', JSON.stringify(this.loginedUser));
-    return this.loginedUser;
+  public setAuthenticatedUser(userToken: string) {
+    window.localStorage.setItem('IsAuthenticated', JSON.stringify(true));
+    window.localStorage.setItem('userToken', JSON.stringify(userToken));
   }
 
   public logout() {
-    this.isAuth = false;
-    window.localStorage.removeItem('loginUser');
+    window.localStorage.removeItem('IsAuthenticated');
+    window.localStorage.removeItem('userToken');
   }
 
   public isAuthenticated(): boolean {
-    return this.isAuth;
+    return JSON.parse(window.localStorage.getItem('IsAuthenticated'));
   }
 
-  public getUserInfo(): User {
-    if (this.isAuth === true) {
-      return JSON.parse(window.localStorage.getItem('loginUser'));
-    } else {
-      return {Id: 0, Email: '', FirstName: '', LastName: ''};
+  public getUserToken(): string {
+    return JSON.parse(window.localStorage.getItem('userToken'));
+  }
+
+  public getUserInfo(): Observable<User> {
+    if (this.isAuthenticated()) {
+
+      const params = new HttpParams()
+                        .set('userToken', JSON.parse(window.localStorage.getItem('userToken')));
+
+      return this.http.get<User>(`${environment.SERVER_URL}/${USER_INFO}`, { params });
     }
-
-  }
-
-  public getUserCredential(): any {
-    return JSON.parse(window.localStorage.getItem('userCredential'));
   }
 }

@@ -12,6 +12,7 @@ import { BreadcrumbsComponent } from '../../core/breadcrumbs/breadcrumbs.compone
 import { SearchComponent } from '../../toolbox/search/search.component';
 import { VideoCourseAddNewComponent } from '../video-course-add-new/video-course-add-new.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('VideoCoursesListComponentComponent', () => {
   let component: VideoCoursesListComponentComponent;
@@ -21,7 +22,8 @@ describe('VideoCoursesListComponentComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
       ],
       declarations: [
         VideoCoursesListComponentComponent,
@@ -49,8 +51,14 @@ describe('VideoCoursesListComponentComponent', () => {
   });
 
   it('should delete item component', () => {
-    const actualValue = component.deleteVideoCourseItem('test');
-    const expectedValue = 'Delete: item parent call test';
+    const actualValue = component.deleteVideoCourseItem({
+      id: 1,
+      Title: 'Test',
+      Description: 'Test description',
+      Duration: 60,
+      Creationdate: '02/02/2018',
+      IsTopRated: false });
+    const expectedValue = 'Delete: item parent call 1';
     expect(expectedValue).toEqual(actualValue);
   });
 });

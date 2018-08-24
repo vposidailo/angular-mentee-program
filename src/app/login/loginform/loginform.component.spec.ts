@@ -4,6 +4,7 @@ import { LoginformComponent } from './loginform.component';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../_shared/services/login_service/login.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('LoginformComponent', () => {
   let component: LoginformComponent;
@@ -12,7 +13,7 @@ describe('LoginformComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginformComponent ],
-      imports: [FormsModule, RouterTestingModule],
+      imports: [FormsModule, RouterTestingModule, HttpClientModule],
       providers: [ LoginService ]
     })
     .compileComponents();

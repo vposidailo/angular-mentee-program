@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "userToken": "FF194BEBE28149108411A93393C32BB8",
+      "password": "123",
+      "userInfo": {
+        "Id": "1",
+        "Email": "vposidaylo@gmail.com",
+        "FirstName": "Vitalii",
+        "LastName": "Posidailo"
+      }
+    }
+  ]
+}

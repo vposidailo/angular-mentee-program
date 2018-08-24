@@ -1,16 +1,18 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { VideoCourseItem } from '../../_shared/model/video-course-item';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-video-course-add-new-item',
   templateUrl: './video-course-add-new-item.component.html',
   styleUrls: ['./video-course-add-new-item.component.css']
 })
-export class VideoCourseAddNewItemComponent implements OnInit {
-  private subscription: Subscription;
+export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
+  public subscription: Subscription;
+  private videoCourceCreatNewItemUpdateSubscription: Subscription;
+  private videoCourceGetItemSubscription: Subscription;
   private videoCourceId = 0;
   public videoCourseTitle = '';
   public videoCourseDescription = '';
@@ -26,15 +28,30 @@ export class VideoCourseAddNewItemComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(data => this.videoCourceId = Number(data['id']));
     this.breadcrumb = 'Course/New Video Course Item';
-
     if (!isNaN(this.videoCourceId) && this.videoCourceId !== 0) {
-      const currentVideoCourse = this.videoCourceService.getVideoCoursesById(this.videoCourceId);
-      this.videoCourseTitle = currentVideoCourse.Title;
-      this.videoCourseDescription = currentVideoCourse.Description;
-      this.videoCourseReleaseDate = currentVideoCourse.Creationdate.toLocaleDateString('en-GB');
-      this.videoCourseDuration = currentVideoCourse.Duration;
+      this.videoCourceGetItemSubscription = this.videoCourceService
+                                                .getVideoCoursesById(this.videoCourceId)
+                                                .subscribe((res: VideoCourseItem) => {
+                                                    const currentVideoCourse = res['course'];
+                                                    this.videoCourseTitle = currentVideoCourse.Title;
+                                                    this.videoCourseDescription = currentVideoCourse.Description;
+                                                    // tslint:disable-next-line:max-line-length
+                                                    this.videoCourseReleaseDate = new Date(currentVideoCourse.Creationdate).toLocaleDateString('en-GB');
+                                                    this.videoCourseDuration = currentVideoCourse.Duration;
+                                                });
 
       this.breadcrumb = 'Course/' + this.videoCourseTitle;
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    if (this.videoCourceCreatNewItemUpdateSubscription) {
+      this.videoCourceCreatNewItemUpdateSubscription.unsubscribe();
+    }
+
+    if (this.videoCourceGetItemSubscription) {
+      this.videoCourceGetItemSubscription.unsubscribe();
     }
   }
 
@@ -49,12 +66,19 @@ export class VideoCourseAddNewItemComponent implements OnInit {
     };
 
     if (isNaN(videoCourceItem.id)) {
-      this.videoCourceService.createVideoCourseItem(videoCourceItem);
-    } else {
-      this.videoCourceService.updateVideoCourceItem(videoCourceItem);
-    }
+      this.videoCourceCreatNewItemUpdateSubscription = this.videoCourceService
+                                                .createVideoCourseItem(videoCourceItem)
+                                                .subscribe((res: VideoCourseItem[]) => {
+                                                    this.router.navigateByUrl('courses');
+                                                });
 
-    this.router.navigateByUrl('courses');
+    } else {
+      this.videoCourceCreatNewItemUpdateSubscription = this.videoCourceService
+                                                .updateVideoCourceItem(videoCourceItem)
+                                                .subscribe((res: VideoCourseItem[]) => {
+                                                    this.router.navigateByUrl('courses');
+                                                });
+    }
   }
 
   rejectNewItemVideoCourse() {

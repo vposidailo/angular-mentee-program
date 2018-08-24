@@ -1,24 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../../_shared/services/login_service/login.service';
 import { User } from '../../_shared/model/user';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  @Input() user: User;
+export class LoginComponent implements OnInit, OnDestroy {
+  private userInfoSubscriber: Subscription;
+  private user: User = <User> {};
 
   constructor(private userService: LoginService, private router: Router) { }
 
   ngOnInit() {
-    this.user =  this.userService.getUserInfo();
+    if (this.userService.isAuthenticated()) {
+      this.userInfoSubscriber =  this.userService.getUserInfo().subscribe((res: User) => {
+        this.user = res['userInfo'];
+      });
+    }
   }
 
-  get checkIfUserLogin(): boolean {
-    return this.userService.isAuthenticated();
+  ngOnDestroy() {
+    this.userInfoSubscriber.unsubscribe();
   }
 
   logoff() {
