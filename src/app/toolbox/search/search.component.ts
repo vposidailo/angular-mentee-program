@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SearchComponent implements OnInit {
 
-  private searchText = '';
+  searchText = '';
   private searchInputSubject = new BehaviorSubject('');
   private searchVideoObservable = this.searchInputSubject.asObservable().pipe(
                                                         debounceTime(1000),
