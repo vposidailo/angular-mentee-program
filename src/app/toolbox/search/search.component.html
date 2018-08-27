@@ -1,9 +1,10 @@
-<div class="padding-left-10px">
-  <input 
-      type="text"
-      class="col-4"
-      name="SearchTextBox"
-      placeholder="Text to search"
-      (ngModelChange)="searchVideoCource($event)"
-      [(ngModel)]="searchText">
-</div>
+<form [formGroup] = "searchForm">
+  <div class="padding-left-10px">
+    <input 
+        type="text"
+        class="col-4"
+        name="SearchTextBox"
+        placeholder="Text to search"
+        formControlName ="searchtext">
+  </div>
+</form>

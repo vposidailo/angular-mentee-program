@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../_shared/services/search_service/search.service';
 import { filter, debounceTime } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -10,21 +11,20 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SearchComponent implements OnInit {
 
-  private searchText = '';
-  private searchInputSubject = new BehaviorSubject('');
-  private searchVideoObservable = this.searchInputSubject.asObservable().pipe(
-                                                        debounceTime(1000),
-                                                        filter((val: string) => val.length / 3 >= 1 || val.length === 0))
-                                                        .subscribe((val: string) => {
-                                                          this.searchService.changeSearchFilter(val);
-                                                        });
+  searchForm = new FormGroup({
+    searchtext: new FormControl()
+  });
+
   constructor(private searchService: SearchService) {
   }
 
   ngOnInit() {
-  }
-
-  searchVideoCource(event) {
-    this.searchInputSubject.next(event);
+    this.searchForm.get('searchtext').valueChanges
+    .pipe(
+      debounceTime(1000),
+      filter((searchInput: string) => searchInput.length / 3 >= 1 || searchInput.length === 0))
+    .subscribe((searchInput: string) => {
+      this.searchService.changeSearchFilter(searchInput);
+    });
   }
 }
