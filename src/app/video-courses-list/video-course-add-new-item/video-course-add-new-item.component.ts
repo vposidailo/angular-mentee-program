@@ -26,22 +26,24 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private activateRoute: ActivatedRoute, private videoCourceService: VideoCoursesServiceService) { }
 
   ngOnInit() {
-    this.subscription = this.activateRoute.params.subscribe(data => this.videoCourceId = Number(data['id']));
-    this.breadcrumb = 'Course/New Video Course Item';
-    if (!isNaN(this.videoCourceId) && this.videoCourceId !== 0) {
-      this.videoCourceGetItemSubscription = this.videoCourceService
-                                                .getVideoCoursesById(this.videoCourceId)
-                                                .subscribe((res: VideoCourseItem) => {
-                                                    const currentVideoCourse = res['course'];
-                                                    this.videoCourseTitle = currentVideoCourse.Title;
-                                                    this.videoCourseDescription = currentVideoCourse.Description;
-                                                    // tslint:disable-next-line:max-line-length
-                                                    this.videoCourseReleaseDate = new Date(currentVideoCourse.Creationdate).toLocaleDateString('en-GB');
-                                                    this.videoCourseDuration = currentVideoCourse.Duration;
-                                                });
+    this.subscription = this.activateRoute.params.subscribe(data => {
+      this.videoCourceId = Number(data['id']);
+      this.breadcrumb = 'Course/New Video Course Item';
+      if (!isNaN(this.videoCourceId) && this.videoCourceId !== 0) {
+        this.videoCourceGetItemSubscription = this.videoCourceService
+                                                  .getVideoCoursesById(this.videoCourceId)
+                                                  .subscribe((res: VideoCourseItem) => {
+                                                      const currentVideoCourse = res['course'];
+                                                      this.videoCourseTitle = currentVideoCourse.Title;
+                                                      this.videoCourseDescription = currentVideoCourse.Description;
+                                                      // tslint:disable-next-line:max-line-length
+                                                      this.videoCourseReleaseDate = new Date(currentVideoCourse.Creationdate).toLocaleDateString('en-GB');
+                                                      this.videoCourseDuration = currentVideoCourse.Duration;
+                                                  });
 
       this.breadcrumb = 'Course/' + this.videoCourseTitle;
-    }
+      }
+    });
   }
 
   ngOnDestroy() {

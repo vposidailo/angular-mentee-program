@@ -1,7 +1,8 @@
-<input 
-    ngDefaultControl 
-    type="text"
-    class="form-control"
-    placeholder="Release date"
-    (change) = "releaseDateChanged()"
-    [(ngModel)] = "releaseDate" />
+<form [formGroup] = "releaseDateForm">
+    <input 
+        ngDefaultControl 
+        type="text"
+        class="form-control"
+        placeholder="Release date"
+        formControlName = "releasedate" />
+</form>

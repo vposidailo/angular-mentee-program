@@ -6,7 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginModule } from '../login/login.module';
 import { LoginService } from '../_shared/services/login_service/login.service';
 import { DateTimePickerComponent } from './controls/date-time-picker/date-time-picker.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DurationComponent } from './controls/duration/duration.component';
 import { DurationPipe } from '../_shared/pipes/duration.pipe';
 import { PipesModule } from '../_shared/pipes/pipes.module';
@@ -19,7 +19,8 @@ import { NoContentComponent } from './no_content/no-content.component';
     CommonModule,
     LoginModule,
     FormsModule,
-    PipesModule
+    PipesModule,
+    ReactiveFormsModule
   ],
   providers: [
     LoginService,
