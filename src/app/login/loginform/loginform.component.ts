@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../../_shared/services/login_service/login.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-loginform',
@@ -10,8 +11,12 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class LoginformComponent implements OnInit, OnDestroy {
   private loginUserSubscriber: Subscription;
-  public username = '';
-  public password = '';
+  loginForm = new FormGroup({
+    username: new FormControl(),
+    password: new FormControl()
+  });
+
+
 
   constructor(private userService: LoginService,
               private router: Router) { }
@@ -24,11 +29,12 @@ export class LoginformComponent implements OnInit, OnDestroy {
   }
 
   loginClick() {
-    this.loginUserSubscriber = this.userService.login(this.username, this.password).subscribe((res: any) => {
-      if (res['isAuthenticated'] === true) {
-        this.userService.setAuthenticatedUser(res['userToken']);
-        this.router.navigateByUrl('courses');
-      }
-    });
+    this.loginUserSubscriber = this.userService.login(this.loginForm.get('username').value, this.loginForm.get('password').value)
+      .subscribe((res: any) => {
+        if (res['isAuthenticated'] === true) {
+          this.userService.setAuthenticatedUser(res['userToken']);
+          this.router.navigateByUrl('courses');
+        }
+      });
   }
 }

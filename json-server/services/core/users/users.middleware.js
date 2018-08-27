@@ -23,7 +23,7 @@ module.exports = (server) => {
             };
 
             res.json(responseObject);
-        }, 5000);
+        }, 1000);
     });
 
     router.get('/userInfo', (req, res, next) => {
