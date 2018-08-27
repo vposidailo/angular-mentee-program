@@ -1,13 +1,14 @@
-<div class="container">
-    <div class="row">
-      <input 
-          type="Text" 
-          class="form-control col-6" 
-          placeholder="Duration" 
-          [(ngModel)] = "minutes"
-          (change) = "durationChanged()"/>
-      <span class="col-6">
-        {{ minutes | duration }}
-      </span>
+<form [formGroup] = "durationForm">
+  <div class="container">
+      <div class="row">
+        <input 
+            type="Text" 
+            class="form-control col-6" 
+            placeholder="Duration" 
+            formControlName = "duration"/>
+        <span class="col-6">
+          {{ minutes | duration }}
+        </span>
+    </div>
   </div>
-</div>
+</form>
