@@ -88,7 +88,6 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
   }
 
   rejectNewItemVideoCourse() {
-    debugger;
-    // this.router.navigateByUrl('courses');
+    this.router.navigateByUrl('courses');
   }
 }
