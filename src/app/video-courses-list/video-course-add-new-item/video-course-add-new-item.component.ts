@@ -3,6 +3,7 @@ import { VideoCourseItem } from '../../_shared/model/video-course-item';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-video-course-add-new-item',
@@ -10,14 +11,18 @@ import { Subscription } from 'rxjs/internal/Subscription';
   styleUrls: ['./video-course-add-new-item.component.css']
 })
 export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
+
+  addUpdateVideoCourseItem = new FormGroup({
+    videoCourseTitle: new FormControl('', [Validators.maxLength(50), Validators.required]),
+    videoCourseDescription: new FormControl('', [Validators.maxLength(500), Validators.required]),
+    videoCourseReleaseDate: new FormControl('', [Validators.required]),
+    videoCourseDuration: new FormControl('', [Validators.required])
+  });
+
   public subscription: Subscription;
   private videoCourceCreatNewItemUpdateSubscription: Subscription;
   private videoCourceGetItemSubscription: Subscription;
   private videoCourceId = 0;
-  public videoCourseTitle = '';
-  public videoCourseDescription = '';
-  public videoCourseReleaseDate = '';
-  public videoCourseDuration = 0;
   public videoCourseAuthors = '';
 
   public breadcrumb = '';
@@ -31,17 +36,16 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
       this.breadcrumb = 'Course/New Video Course Item';
       if (!isNaN(this.videoCourceId) && this.videoCourceId !== 0) {
         this.videoCourceGetItemSubscription = this.videoCourceService
-                                                  .getVideoCoursesById(this.videoCourceId)
-                                                  .subscribe((res: VideoCourseItem) => {
-                                                      const currentVideoCourse = res['course'];
-                                                      this.videoCourseTitle = currentVideoCourse.Title;
-                                                      this.videoCourseDescription = currentVideoCourse.Description;
-                                                      // tslint:disable-next-line:max-line-length
-                                                      this.videoCourseReleaseDate = new Date(currentVideoCourse.Creationdate).toLocaleDateString('en-GB');
-                                                      this.videoCourseDuration = currentVideoCourse.Duration;
-                                                  });
-
-      this.breadcrumb = 'Course/' + this.videoCourseTitle;
+                          .getVideoCoursesById(this.videoCourceId)
+                          .subscribe((res: VideoCourseItem) => {
+                              const currentVideoCourse = res['course'];
+                              this.addUpdateVideoCourseItem.controls['videoCourseTitle'].setValue(currentVideoCourse.Title);
+                              this.addUpdateVideoCourseItem.controls['videoCourseDescription'].setValue(currentVideoCourse.Description);
+                              // tslint:disable-next-line:max-line-length
+                              this.addUpdateVideoCourseItem.controls['videoCourseReleaseDate'].setValue(new Date(currentVideoCourse.Creationdate).toLocaleDateString('en-GB'));
+                              this.addUpdateVideoCourseItem.controls['videoCourseDuration'].setValue(currentVideoCourse.Duration);
+                              this.breadcrumb = 'Course/' + this.addUpdateVideoCourseItem.controls['videoCourseTitle'].value;
+                          });
       }
     });
   }
@@ -59,44 +63,32 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
 
   newItemVideoCourse() {
     const videoCourceItem = {
-      id: this.videoCourceId,
-      Title: this.videoCourseTitle,
-      Description: this.videoCourseDescription,
-      Duration: this.videoCourseDuration,
-      Creationdate: new Date(this.videoCourseReleaseDate.split('/').reverse().join('/')),
+      Id: this.videoCourceId,
+      Title: this.addUpdateVideoCourseItem.controls['videoCourseTitle'].value,
+      Description: this.addUpdateVideoCourseItem.controls['videoCourseDescription'].value,
+      Duration: this.addUpdateVideoCourseItem.controls['videoCourseDuration'].value,
+      Creationdate: this.addUpdateVideoCourseItem.controls['videoCourseReleaseDate'].value,
       IsTopRated: false
     };
 
-    if (isNaN(videoCourceItem.id)) {
-      this.videoCourceCreatNewItemUpdateSubscription = this.videoCourceService
-                                                .createVideoCourseItem(videoCourceItem)
-                                                .subscribe((res: VideoCourseItem[]) => {
-                                                    this.router.navigateByUrl('courses');
-                                                });
+    // if (isNaN(videoCourceItem.id)) {
+    //   this.videoCourceCreatNewItemUpdateSubscription = this.videoCourceService
+    //                                             .createVideoCourseItem(videoCourceItem)
+    //                                             .subscribe((res: VideoCourseItem[]) => {
+    //                                                 this.router.navigateByUrl('courses');
+    //                                             });
 
-    } else {
-      this.videoCourceCreatNewItemUpdateSubscription = this.videoCourceService
-                                                .updateVideoCourceItem(videoCourceItem)
-                                                .subscribe((res: VideoCourseItem[]) => {
-                                                    this.router.navigateByUrl('courses');
-                                                });
-    }
+    // } else {
+    //   this.videoCourceCreatNewItemUpdateSubscription = this.videoCourceService
+    //                                             .updateVideoCourceItem(videoCourceItem)
+    //                                             .subscribe((res: VideoCourseItem[]) => {
+    //                                                 this.router.navigateByUrl('courses');
+    //                                             });
+    // }
   }
 
   rejectNewItemVideoCourse() {
-    this.router.navigateByUrl('courses');
+    debugger;
+    // this.router.navigateByUrl('courses');
   }
-
-  releaseDateChanged(event) {
-    this.videoCourseReleaseDate = event;
-  }
-
-  durationChanged(event) {
-    this.videoCourseDuration = event;
-  }
-
-  authorChanged(event) {
-    this.videoCourseAuthors = event;
-  }
-
 }

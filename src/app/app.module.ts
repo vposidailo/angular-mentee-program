@@ -14,10 +14,12 @@ import { IsNotAuthGuard } from './_shared/guards/is-not-auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './_shared/interceptors/token-interceptor';
 import { LoaderInterceptor } from './_shared/interceptors/loader-Interceptor';
+import { DurationValidatorDirective } from './_shared/directives/validators/duration-validator.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DurationValidatorDirective
   ],
   imports: [
     BrowserModule,

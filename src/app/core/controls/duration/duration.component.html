@@ -1,14 +1,13 @@
-<form [formGroup] = "durationForm">
-  <div class="container">
-      <div class="row">
-        <input 
-            type="Text" 
-            class="form-control col-6" 
-            placeholder="Duration" 
-            formControlName = "duration"/>
-        <span class="col-6">
-          {{ minutes | duration }}
-        </span>
-    </div>
+<div class="container">
+    <div class="row">
+      <input 
+          type="Text" 
+          class="form-control col-6" 
+          placeholder="Duration" 
+          [(ngModel)] = "value" 
+          (blur)="onTouchedCallback()"/>
+      <span class="col-6" *ngIf="value > 0">
+        {{ value | duration }}
+      </span>
   </div>
-</form>
+</div>

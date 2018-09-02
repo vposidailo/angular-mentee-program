@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 import { VideoCourseItem } from '../../_shared/model/video-course-item';
 import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SearchService } from '../../_shared/services/search_service/search.service';
-import { filter, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-video-courses-list-component',

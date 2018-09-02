@@ -1,8 +1,8 @@
-<form [formGroup] = "releaseDateForm">
-    <input 
-        ngDefaultControl 
-        type="text"
-        class="form-control"
-        placeholder="Release date"
-        formControlName = "releasedate" />
-</form>
+<input 
+		ngDefaultControl 
+		type="text"
+		class="form-control"
+		placeholder="Release date"
+		[(ngModel)] = "value"
+		(blur)="onTouchedCallback()"
+		/>

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VideoCoursesListItemComponentComponent } from './video-courses-list-item-component.component';
-import { CreationDateDirective } from '../../_shared/derectives/creation-date.directive';
+import { CreationDateDirective } from '../../_shared/directives/creation-date.directive';
 import { DurationPipe } from '../../_shared/pipes/duration.pipe';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BreadcrumbsComponent } from '../../core/breadcrumbs/breadcrumbs.component';

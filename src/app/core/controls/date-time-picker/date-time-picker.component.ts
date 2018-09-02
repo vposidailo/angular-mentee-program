@@ -1,33 +1,55 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { debounceTime, filter } from 'rxjs/operators';
+import { Component, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, ValidatorFn, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
 @Component({
   selector: 'app-date-time-picker',
   templateUrl: './date-time-picker.component.html',
-  styleUrls: ['./date-time-picker.component.css']
+  styleUrls: ['./date-time-picker.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DateTimePickerComponent),
+      multi: true
+    }
+  ]
 })
-export class DateTimePickerComponent implements OnInit, OnChanges {
+// export class DateTimePickerComponent implements OnInit, OnChanges {
+export class DateTimePickerComponent implements ControlValueAccessor {
+  // The internal data model
+  private innerValue: any = '';
 
-  releaseDateForm = new FormGroup({
-    releasedate: new FormControl()
-  });
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void;
+  private onChangeCallback: (_: any) => void;
 
-  @Input() public releaseDate = '';
-  @Output() releaseDateOutput: EventEmitter<string> = new EventEmitter<string>();
-  constructor() { }
-
-  ngOnInit() {
-    this.releaseDateForm.get('releasedate').valueChanges
-      .pipe(
-        debounceTime(1000),
-        filter((date: string) => date.length === 10))
-      .subscribe((date: string) => {
-        this.releaseDateOutput.emit(date);
-      });
+  // get accessor
+  get value(): any {
+    return this.innerValue;
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.releaseDateForm.controls['releasedate'].setValue(changes['releaseDate'].currentValue);
+  // set accessor including call the onchange callback
+  set value(v: any) {
+    if (v !== this.innerValue) {
+        this.innerValue = v;
+        this.onChangeCallback(v);
+    }
+  }
+
+  // From ControlValueAccessor interface
+  writeValue(value: any) {
+    if (value !== this.innerValue) {
+        this.innerValue = value;
+    }
+  }
+
+  // From ControlValueAccessor interface
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  // From ControlValueAccessor interface
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
   }
 }

@@ -4,7 +4,7 @@ import { VideoCoursesListComponentComponent } from './video-courses-list-compone
 import { VideoCoursesServiceService } from '../../_shared/services/video_courses_service/video-courses-service.service';
 import { VideoCoursesListItemComponentComponent } from '../video-courses-list-item-component/video-courses-list-item-component.component';
 import { VideoCourceOrderPipe } from '../../_shared/pipes/video-cource-order.pipe';
-import { CreationDateDirective } from '../../_shared/derectives/creation-date.directive';
+import { CreationDateDirective } from '../../_shared/directives/creation-date.directive';
 import { DurationPipe } from '../../_shared/pipes/duration.pipe';
 import { SearchByNamePipe } from '../../_shared/pipes/search-by-name.pipe';
 import { RouterTestingModule } from '@angular/router/testing';
