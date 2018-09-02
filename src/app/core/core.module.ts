@@ -12,7 +12,8 @@ import { DurationPipe } from '../_shared/pipes/duration.pipe';
 import { PipesModule } from '../_shared/pipes/pipes.module';
 import { AuthorComponent } from './controls/author/author.component';
 import { NoContentComponent } from './no_content/no-content.component';
-
+import { TagInputModule } from '../../../node_modules/ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -20,7 +21,9 @@ import { NoContentComponent } from './no_content/no-content.component';
     LoginModule,
     FormsModule,
     PipesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TagInputModule,
+    BrowserAnimationsModule
   ],
   providers: [
     LoginService,

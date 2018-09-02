@@ -13,7 +13,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, ValidatorFn, AbstractControl, 
     }
   ]
 })
-// export class DateTimePickerComponent implements OnInit, OnChanges {
+
 export class DateTimePickerComponent implements ControlValueAccessor {
   // The internal data model
   private innerValue: any = '';

@@ -27,7 +27,7 @@ import { DurationValidatorDirective } from './_shared/directives/validators/dura
     VideoCoursesListModule,
     LoginModule,
     RouterModule.forRoot(ROUTES, {useHash: true}),
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     VideoCoursesServiceService,

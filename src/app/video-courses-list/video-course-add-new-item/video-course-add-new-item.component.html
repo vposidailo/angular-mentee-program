@@ -120,13 +120,16 @@
                 <label>
                   Autors:
                 </label>
+                <div 
+                    *ngIf="addUpdateVideoCourseItem.controls['videoCourseAuthors'].invalid 
+                          && addUpdateVideoCourseItem.controls['videoCourseAuthors'].errors.required
+                          && (addUpdateVideoCourseItem.controls['videoCourseAuthors'].dirty || addUpdateVideoCourseItem.controls['videoCourseAuthors'].touched)"
+                    class="alert alert-danger">
+                  Course autor required
+                </div>
                 <div class="input-group">
-                  <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-pencil">
-                    </span>
-                  </span>
                   <app-author
-                      (authorOutput) = "authorChanged($event)">
+                      formControlName = "videoCourseAuthors">
                   </app-author>
                 </div>
             </div>

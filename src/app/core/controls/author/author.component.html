@@ -1,6 +1,11 @@
-<input 
-  type="text"
-  class="form-control"
-  placeholder="Autors"
-  [(ngModel)] = "author"
-  (changed) = "authorChanged()"/>
+<tag-input
+    class="form-control"
+    placeholder="Autors"
+    [(ngModel)] = "value"
+    (onBlur) = "onTouchedCallback()"
+    [onlyFromAutocomplete]="true">
+  <tag-input-dropdown 
+      [showDropdownIfEmpty]="true"
+      [autocompleteObservable]="requestAutocompleteItems">
+  </tag-input-dropdown>
+</tag-input>

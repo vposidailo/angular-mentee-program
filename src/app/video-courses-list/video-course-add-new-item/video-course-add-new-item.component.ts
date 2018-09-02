@@ -16,14 +16,14 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
     videoCourseTitle: new FormControl('', [Validators.maxLength(50), Validators.required]),
     videoCourseDescription: new FormControl('', [Validators.maxLength(500), Validators.required]),
     videoCourseReleaseDate: new FormControl('', [Validators.required]),
-    videoCourseDuration: new FormControl('', [Validators.required])
+    videoCourseDuration: new FormControl('', [Validators.required]),
+    videoCourseAuthors: new FormControl('', [Validators.required])
   });
 
   public subscription: Subscription;
   private videoCourceCreatNewItemUpdateSubscription: Subscription;
   private videoCourceGetItemSubscription: Subscription;
   private videoCourceId = 0;
-  public videoCourseAuthors = '';
 
   public breadcrumb = '';
 
@@ -88,6 +88,7 @@ export class VideoCourseAddNewItemComponent implements OnInit, OnDestroy {
   }
 
   rejectNewItemVideoCourse() {
-    this.router.navigateByUrl('courses');
+    debugger;
+    // this.router.navigateByUrl('courses');
   }
 }
